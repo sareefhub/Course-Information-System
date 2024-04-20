@@ -37,6 +37,10 @@ function Navbar() {
               <a className="nav-link" href="/info">INFO</a>
             </li>
           </ul>
+          <div className="ml-auto">
+            <button className="btn btn-primary ">Login</button>
+            <button className="btn btn-primary">Sign up</button>
+          </div>
         </div>
       </div>
     </nav>
