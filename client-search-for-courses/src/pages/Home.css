@@ -1,20 +1,73 @@
+.title-error-handleSubmit{
+  color: red;
+}
+.home-container {
+  text-align: center; /* กำหนดให้เนื้อหาอยู่ตรงกลาง */
+}
+
 .home-search-bar {
-    margin-bottom: 20px;
-    text-align: center;
+  margin-bottom: 20px;
+  display: inline-block; /* เพื่อให้ Navbar และ Search bar อยู่ในบรรทัดเดียวกัน */
+}
+
+.home-title {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  color: #777;
+}
+
+.search-input {
+  width: 70vw; /* เปลี่ยนเป็นหน่วย vw */
+  max-width: 500px;
+  padding: 10px;
+  border: none;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  padding-left: 40px;
+  font-size: 16px;
+}
+
+
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff;
+  border-radius: 5px;
+}
+
+.search-input::placeholder {
+  color: #777777;
+}
+
+.search-input[type="text"] {
+  border: 4px solid transparent;
+  border-image: linear-gradient(to right, #007bff, #4e73df);
+  border-image-slice: 1;
+  border-radius: 5px;
+}
+
+.course-cards-container {
+  text-align: center;
+  margin: 8px auto; /* กำหนดให้มีช่องว่าง 8px ด้านบนและด้านล่าง และ Auto ที่ด้านซ้ายและด้านขวาเพื่อให้ตรงกลาง */
+  max-width: 800px; /* กำหนดความยาวสูงสุดเป็น 800px */
+}
+
+
+@media screen and (max-width: 768px) {
+  .search-input {
+    width: 90vw; /* ปรับขนาดให้ช่องค้นหายาวกว่าเมื่อหน้าจอเล็กลง */
   }
-  
-  .home-search-bar input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .home-search-bar button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+}
