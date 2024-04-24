@@ -1,7 +1,7 @@
 import React from 'react';
 import './CourseCard.css';
 
-const CourseCard = ({ code, subjectNameEng, subjectNameThai, credit }) => {
+const CourseCard = ({ code, subjectNameEng, subjectNameThai, credit, campusThai }) => {
     return (
         <div className="course-card">
             <div className="card-glow"></div>
@@ -9,7 +9,7 @@ const CourseCard = ({ code, subjectNameEng, subjectNameThai, credit }) => {
             <div className="card-title">{code} {subjectNameEng}</div>
             <div className="card-body">{subjectNameThai}</div>
             <div className="card-body">หน่วยกิต {credit}</div>
-            <div className="card-body">วิทยาเขต : หาดใหญ่ </div>
+            <div className="card-campus"><span>{campusThai}</span></div> {/* ใช้ span ครอบตัวอักษรที่ต้องการครอบ */}
         </div>
     );
 };

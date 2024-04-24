@@ -3,8 +3,8 @@
     flex-direction: column;
     isolation: isolate;
     position: relative;
-    width: 45rem; /* เปลี่ยนความยาวตามต้องการ */
-    height: 8rem;
+    width: 49rem; /* เปลี่ยนความยาวตามต้องการ */
+    height: 10rem;
     background: #29292c;
     border-radius: 1rem;
     overflow: hidden;
@@ -12,7 +12,8 @@
     font-size: 16px;
     --gradient: linear-gradient(to bottom, #2eadff, #3d83ff, #7e61ff);
     --color: #32a6ff;
-    margin: 0 auto; /* จัดตำแหน่งให้อยู่ตรงกลาง */
+    margin: 0 auto 10px;
+    padding-bottom: 100px;
 }
 
 .course-card:before {
@@ -47,10 +48,8 @@
     text-align: left;
     transition: transform 300ms ease;
     z-index: 5;
-}
-
-.course-card:hover .card-title {
-    transform: translateX(0.15rem);
+    white-space: nowrap;
+    text-overflow: ellipsis; /* แสดงเครื่องหมาย ... หากข้อความเกินขอบเขตของการ์ด */
 }
 
 .card-body {
@@ -59,6 +58,25 @@
     text-align: left;
     transition: transform 300ms ease;
     z-index: 5;
+    text-overflow: ellipsis;
+}
+
+.card-campus {
+    color: #ffffff;
+    padding: 0 1.25rem;
+    text-align: left;
+    transition: transform 300ms ease;
+    z-index: 5;
+    text-align: end;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.card-campus span {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 2px 5px; /* เพิ่ม padding เพื่อให้กรอบสีเหลี่ยมห่างจากตัวอักษร */
+    background-color: #32a6ff;
 }
 
 
@@ -103,3 +121,25 @@
     font-size: 0.9rem;
     width: 75%;
 }
+
+@media screen and (max-width: 768px) {
+    .course-card {
+      width: 90%; /* เปลี่ยนเป็นความยาวที่เหมาะสมกับหน้าจอขนาดเล็ก */
+      height: auto; /* ทำให้ความสูงของการ์ดปรับขนาดตามเนื้อหา */
+      height: 10.2rem;
+      margin: 0 auto 20px; /* ปรับมาร์จินให้กลางและมีช่องว่างด้านล่าง */
+    }
+  
+    .card-title,
+    .card-body {
+      padding: 0.5rem 0.25rem 0.3rem 1rem; /* ปรับการระบุพื้นที่การ์ดภายใน */
+      font-size: 1rem; /* ปรับขนาดตัวอักษรให้มีขนาดเหมาะสมกับขนาดหน้าจอ */
+      white-space: nowrap;
+    }
+  
+    .note {
+      font-size: 0.8rem; /* ปรับขนาดตัวอักษรของโน้ต */
+      width: 90%; /* ปรับความกว้างของโน้ตให้เหมาะสมกับหน้าจอ */
+    }
+  }
+  

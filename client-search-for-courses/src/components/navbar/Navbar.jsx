@@ -38,8 +38,7 @@ function Navbar() {
             </li>
           </ul>
           <div className="ml-auto">
-            <button className="btn btn-primary ">Login</button>
-            <button className="btn btn-primary">Sign up</button>
+            <button className="btn btn-primary">เข้าสู่ระบบ</button>
           </div>
         </div>
       </div>

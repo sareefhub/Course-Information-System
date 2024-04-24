@@ -34,7 +34,20 @@
 }
 
 .ml-auto button {
+  color: #ffffff;
+  background-image: linear-gradient(to right, #3d83ff, #7e61ff); /* สีน้ำเงินไล่สีม่วง */
   margin-right: 10px;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-image 0.3s ease; /* เพิ่ม transition เมื่อเปลี่ยนสี */
+}
+
+.ml-auto button:hover {
+  background-image: linear-gradient(to right, #7e61ff, #3d83ff); /* เมื่อ hover สลับสี */
 }
 
 @media only screen and (max-width: 600px) {
@@ -43,9 +56,11 @@
       font-size: 12px;
       height: auto;
     }
-  
+    .navbar-nav{
+      font-size: 15px;
+    }
     .navbar-text {
-      font-size: 12px;
+      font-size: 13px;
     }
   
     .navbar-text-cis {

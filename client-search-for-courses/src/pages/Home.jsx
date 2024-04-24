@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch ,faFilter } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios'; // Import Axios
 import Navbar from '../components/navbar/Navbar';
 import CourseCard from '../components/card/CourseCard';
@@ -18,6 +18,7 @@ const Home = () => {
 
     const term = 1;
     const year = 2564;
+    const filterSubjectOffer = "SubjectOffer" ;
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
@@ -30,10 +31,14 @@ const Home = () => {
             setSearchResults([]);
             return;
         }
-        
+        if (searchTerm.trim().length < 3) {
+            setErrorMessage(<div className='title-error-handleSubmit'>ต้องระบุอย่างน้อย 3ตัว</div>);
+            setSearchResults([]);
+            return;
+        }
         // เชื่อม API เพื่อค้นหารายวิชา
         setLoading(true);
-        axios.get(`${Conf.apiUrl}/${term}/${year}?campasID=&facID=&deptID=&keySearch=${encodeURIComponent(searchTerm)}&offset=0&limit=5`, {
+        axios.get(`${Conf.apiUrl}/${filterSubjectOffer}/${term}/${year}?campasID=&facID=&deptID=&keySearch=${encodeURIComponent(searchTerm)}&offset=0&limit=5`, {
             headers: {
                 'Content-Type': 'application/json',
                 'credential': Conf.apiKey
@@ -68,7 +73,7 @@ const Home = () => {
             <Navbar />
             <div className="home-search-bar">
                 <div className='home-title'>ค้นหารายวิชา</div>
-                <form onSubmit={handleSubmit}>
+                <form className="form-search" onSubmit={handleSubmit}>
                     <div className="search-container">
                         <FontAwesomeIcon
                             icon={faSearch}
@@ -83,6 +88,13 @@ const Home = () => {
                             className="search-input"
                         />
                     </div>
+                    <Button className="Btn-filter-term">1/2564</Button>
+                    <Button className="Btn-filter" onClick={handleShowModal}>                        
+                        <FontAwesomeIcon
+                            icon={faFilter}
+                            className="filter-icon"
+                        />
+                    </Button>
                 </form>
             </div>
             {errorMessage && (
@@ -109,20 +121,24 @@ const Home = () => {
                     subjectNameEng={course.subjectNameEng} 
                     subjectNameThai={course.subjectNameThai} 
                     credit={course.credit}
+                    campusThai={course.campusNameThai}
                     />
                 ))}
             </div>
-            <Button onClick={handleShowModal}>เลือก</Button>
+
+
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal Title</Modal.Title>
+                    <Modal.Title>กรองรายวิชา</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* ทำสิ่งที่คุณต้องการแสดงใน Modal ที่นี่ */}
+                    <div className="filterterm">
+                        Hello
+                    </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setShowModal(false)}>
-                        Close
+                        ปิด
                     </Button>
                     {/* เพิ่มปุ่มเพิ่มเติมหรือสิ่งที่ต้องการทำใน Footer ของ Modal ที่นี่ */}
                 </Modal.Footer>
