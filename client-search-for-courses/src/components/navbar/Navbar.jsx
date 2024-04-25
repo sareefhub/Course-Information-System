@@ -12,7 +12,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           <img src={require("../../images/logo-psu.png")} alt="Logo" width="100px" height="40px"/>
           <span className="navbar-text-cis">CIS</span>
         </a>

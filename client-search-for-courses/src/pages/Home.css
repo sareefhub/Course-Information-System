@@ -36,6 +36,14 @@
   color: #777;
 }
 
+.search-icon-remove {
+  position: absolute;
+  top: 48%;
+  transform: translateY(-50%);
+  right: 40px;
+  color: #777;
+}
+
 .search-input {
   width: 70vw; /* เปลี่ยนเป็นหน่วย vw */
   max-width: 500px;
@@ -90,25 +98,54 @@
 .Btn-filter::after {
   margin-left: 5px; 
 }
-.Btn-filter-term {
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button,
+.dropdown-content .dropdown-item {
+  width: 150px; /* เพิ่มความกว้าง */
+  height: 54px; /* เพิ่มความสูง */
+}
+
+.dropdown-button {
   margin: 4px;
-  height: 54px;
   padding: 0 10px;
-  font-size: 16px;
-  border: none; 
-  border-radius: 5px; 
+  border: none;
+  border-radius: 5px;
   background-image: linear-gradient(to right, #007bff, #4e73df);
-  color: white; 
-  cursor: pointer; 
+  color: white;
+  cursor: pointer;
   transition: background-image 0.3s ease;
 }
 
-.Btn-filter-term:hover {
-  background-image: linear-gradient(to right, #4e73df, #007bff); 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 150px;
+  z-index: 1;
 }
 
-.Btn-filter-term::after {
-  margin-left: 5px; 
+.dropdown-content .dropdown-item {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-content .dropdown-item:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-button::after {
+  content: "\25BE"; /* Unicode character for down arrow */
+  margin-left: 5px;
 }
 
 .filter-icon {

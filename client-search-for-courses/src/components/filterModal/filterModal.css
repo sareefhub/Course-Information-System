@@ -1,0 +1,34 @@
+/* Modal Title */
+.modal-header {
+    background-color: #007bff; /* เปลี่ยนสีพื้นหลัง */
+    color: #fff; /* เปลี่ยนสีข้อความ */
+    border-bottom: none; /* ลบเส้นขอบด้านล่าง */
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 20px;
+}
+
+/* Checkbox Label */
+.form-check-label {
+    color: #333; /* เปลี่ยนสีข้อความ Checkbox */
+}
+
+/* Modal Footer */
+.modal-footer {
+    border-top: none; /* ลบเส้นขอบด้านบน */
+    padding: 15px 20px;
+}
+
+/* Close Button */
+.modal-footer button {
+    background-color: #6c757d; /* เปลี่ยนสีพื้นหลังปุ่ม */
+    border: none; /* ลบเส้นขอบ */
+    color: #fff; /* เปลี่ยนสีข้อความ */
+}
+
+/* Close Button Hover */
+.modal-footer button:hover {
+    background-color: #545b62; /* เปลี่ยนสีพื้นหลังปุ่มเมื่อโฮเวอร์ */
+}
