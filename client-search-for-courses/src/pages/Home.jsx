@@ -19,6 +19,7 @@ const Home = () => {
     const [selectedTerm, setSelectedTerm] = useState();
     const [selectedYear, setSelectedYear] = useState();
     const [showClearIcon, setShowClearIcon] = useState(false);
+    const [selectedCampus, setSelectedCampus] = useState(null); // เพิ่ม state เก็บวิทยาเขตที่เลือก
 
     const filterSubjectOffer = "SubjectOffer";
     const terms = [1, 2, 3];
@@ -52,7 +53,9 @@ const Home = () => {
         })
         .then(response => {
             if (response.data && response.data.data && Array.isArray(response.data.data)) {
-                setSearchResults(response.data.data);
+                // กรองข้อมูลด้วยวิทยาเขตที่เลือก
+                const filteredCourses = selectedCampus ? response.data.data.filter(course => course.campusNameThai === selectedCampus) : response.data.data;
+                setSearchResults(filteredCourses);
                 setLoading(false);
                 setErrorMessage('');
             } else {
@@ -80,6 +83,12 @@ const Home = () => {
 
     const handleCloseModal = () => {
         setShowModal(false);
+    };
+
+    // สร้างฟังก์ชั่นเพื่อรับค่าวิทยาเขตที่เลือกจาก Modal
+    const handleFilterByCampus = (selectedCampus) => {
+        setSelectedCampus(selectedCampus);
+        setShowModal(false); // ปิด Modal เมื่อเลือกเสร็จ
     };
 
     return (
@@ -128,7 +137,7 @@ const Home = () => {
                             className="filter-icon"
                         />
                     </Button>
-                    <FilterModal showModal={showModal} handleClose={handleCloseModal} />
+                    <FilterModal showModal={showModal} handleClose={handleCloseModal} handleFilterByCampus={handleFilterByCampus} /> {/* ส่งฟังก์ชั่น handleFilterByCampus ไปยัง FilterModal */}
                 </form>
             </div>
             {errorMessage && (

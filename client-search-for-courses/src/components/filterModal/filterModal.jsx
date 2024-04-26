@@ -1,27 +1,24 @@
 import { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import './filterModal.css'
+import './filterModal.css';
 
-const FilterModal = ({ showModal, handleClose }) => {
-    const [checkboxState, setCheckboxState] = useState({
-        hatyai: false,
-        pattani: false,
-        suratthani: false,
-        trang: false,
-        phuket: false,
-    });
+const FilterModal = ({ showModal, handleClose, handleFilterByCampus }) => { // ปรับเพิ่ม handleFilterByCampus เป็นพารามิเตอร์
+    const [selectedOption, setSelectedOption] = useState(null);
 
     const handleCheckboxChange = (event) => {
-        const { name, checked } = event.target;
-        setCheckboxState({
-            ...checkboxState,
-            [name]: checked,
-        });
+        const { value } = event.target;
+        setSelectedOption(value);
+    };
+
+    const handleSubmit = () => {
+        console.log("Selected option:", selectedOption);
+        handleClose(); // ปิด Modal เมื่อกดปุ่ม "ตกลง"
+        handleFilterByCampus(selectedOption); // ส่งค่าที่เลือกไปให้ Component หลักเพื่อทำการกรองข้อมูล
     };
 
     return (
         <Modal show={showModal} onHide={handleClose}>
-            <Modal.Header closeButton>
+            <Modal.Header closeButton className="modal-header">
                 <Modal.Title>ตัวกรองข้อมูล</Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -31,42 +28,47 @@ const FilterModal = ({ showModal, handleClose }) => {
                     </div>
                     <Form.Group controlId="formBasicCheckbox">
                         <Form.Check
-                            type="checkbox"
+                            type="radio"
                             label="หาดใหญ่"
-                            name="hatyai"
-                            checked={checkboxState.hatyai}
+                            name="campus"
+                            value="วิทยาเขตหาดใหญ่"
+                            checked={selectedOption === "วิทยาเขตหาดใหญ่"}
                             onChange={handleCheckboxChange}
                         />
                         <Form.Check
-                            type="checkbox"
+                            type="radio"
                             label="ปัตตานี"
-                            name="pattani"
-                            checked={checkboxState.pattani}
+                            name="campus"
+                            value="วิทยาเขตปัตตานี"
+                            checked={selectedOption === "วิทยาเขตปัตตานี"}
                             onChange={handleCheckboxChange}
                         />
                         <Form.Check
-                            type="checkbox"
+                            type="radio"
                             label="สุราษฎร์ธานี"
-                            name="suratthani"
-                            checked={checkboxState.suratthani}
+                            name="campus"
+                            value="วิทยาเขตสุราษฎร์ธานี"
+                            checked={selectedOption === "วิทยาเขตสุราษฎร์ธานี"}
                             onChange={handleCheckboxChange}
                         />
                         <Form.Check
-                            type="checkbox"
+                            type="radio"
                             label="ตรัง"
-                            name="trang"
-                            checked={checkboxState.trang}
+                            name="campus"
+                            value="วิทยาเขตตรัง"
+                            checked={selectedOption === "วิทยาเขตตรัง"}
                             onChange={handleCheckboxChange}
                         />
                         <Form.Check
-                            type="checkbox"
+                            type="radio"
                             label="ภูเก็ต"
-                            name="phuket"
-                            checked={checkboxState.phuket}
+                            name="campus"
+                            value="วิทยาเขตภูเก็ต"
+                            checked={selectedOption === "วิทยาเขตภูเก็ต"}
                             onChange={handleCheckboxChange}
                         />
                     </Form.Group>
-                    <Button className="Btn-filter" >ตกลง</Button>
+                    <Button className="Btn-filter-xx" onClick={handleSubmit}>ตกลง</Button>
                 </Form>
             </Modal.Body>
         </Modal>

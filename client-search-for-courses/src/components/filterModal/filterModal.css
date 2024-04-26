@@ -1,8 +1,14 @@
 /* Modal Title */
 .modal-header {
-    background-color: #007bff; /* เปลี่ยนสีพื้นหลัง */
-    color: #fff; /* เปลี่ยนสีข้อความ */
-    border-bottom: none; /* ลบเส้นขอบด้านล่าง */
+    background-image: linear-gradient(to right, #4e73df, #007bff); 
+    color: #fff;
+    border-bottom: none;
+}
+
+/* Modal Container */
+.modal-dialog {
+    align-items: center;
+    justify-content: center;
 }
 
 /* Modal Body */
@@ -12,23 +18,41 @@
 
 /* Checkbox Label */
 .form-check-label {
-    color: #333; /* เปลี่ยนสีข้อความ Checkbox */
+    color: #333;
 }
 
 /* Modal Footer */
 .modal-footer {
-    border-top: none; /* ลบเส้นขอบด้านบน */
+    border-top: none;
     padding: 15px 20px;
 }
 
 /* Close Button */
 .modal-footer button {
-    background-color: #6c757d; /* เปลี่ยนสีพื้นหลังปุ่ม */
-    border: none; /* ลบเส้นขอบ */
-    color: #fff; /* เปลี่ยนสีข้อความ */
+    background-color: #6c757d;
+    border: none;
+    color: #fff;
 }
 
 /* Close Button Hover */
 .modal-footer button:hover {
-    background-color: #545b62; /* เปลี่ยนสีพื้นหลังปุ่มเมื่อโฮเวอร์ */
+    background-color: #545b62;
 }
+
+/* Hover effect on filter options */
+.form-check-input:hover + .form-check-label::before {
+    border-color: #007bff; /* Change border color on hover */
+}
+
+/* Change background color when checkbox is checked */
+.form-check-input:checked + .form-check-label::before {
+    background-color: #007bff; /* Change background color when checked */
+}
+
+.Btn-filter-xx {
+    display: block;
+    margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+    align-items: center;
+    justify-content: center;
+}
+
