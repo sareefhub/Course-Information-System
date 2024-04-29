@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, DropdownButton, Dropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faFilter , faXmark } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import Navbar from '../components/navbar/Navbar';
-import CourseCard from '../components/card/CourseCard';
-import Loader from '../components/loader/Loader';
-import Conf from '../config';
-import FilterModal from '../components/filterModal/filterModal';
+import Navbar from '../../components/navbar/Navbar';
+import CourseCard from '../../components/card/CourseCard';
+import Loader from '../../components/loader/Loader';
+import Conf from '../../config';
+import FilterModal from '../../components/filterModal/filterModal';
 import './Home.css';
 
 const Home = () => {
@@ -19,7 +19,7 @@ const Home = () => {
     const [selectedTerm, setSelectedTerm] = useState();
     const [selectedYear, setSelectedYear] = useState();
     const [showClearIcon, setShowClearIcon] = useState(false);
-    const [selectedCampus, setSelectedCampus] = useState(null); // เพิ่ม state เก็บวิทยาเขตที่เลือก
+    const [selectedCampus, setSelectedCampus] = useState(null);
 
     const filterSubjectOffer = "SubjectOffer";
     const terms = [1, 2, 3];

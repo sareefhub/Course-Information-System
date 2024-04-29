@@ -2,12 +2,16 @@ import { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './filterModal.css';
 
-const FilterModal = ({ showModal, handleClose, handleFilterByCampus }) => { // ปรับเพิ่ม handleFilterByCampus เป็นพารามิเตอร์
+const FilterModal = ({ showModal, handleClose, handleFilterByCampus }) => {
     const [selectedOption, setSelectedOption] = useState(null);
 
     const handleCheckboxChange = (event) => {
-        const { value } = event.target;
-        setSelectedOption(value);
+        const { value, checked } = event.target;
+        if (checked) {
+            setSelectedOption(value); // เมื่อติ๊กเลือกให้เก็บค่าที่เลือก
+        } else {
+            setSelectedOption(null); // เมื่อเลือกยกเลิกให้เคลียร์ค่าที่เก็บไว้
+        }
     };
 
     const handleSubmit = () => {
@@ -28,7 +32,7 @@ const FilterModal = ({ showModal, handleClose, handleFilterByCampus }) => { // �
                     </div>
                     <Form.Group controlId="formBasicCheckbox">
                         <Form.Check
-                            type="radio"
+                            type="checkbox"
                             label="หาดใหญ่"
                             name="campus"
                             value="วิทยาเขตหาดใหญ่"
@@ -36,7 +40,7 @@ const FilterModal = ({ showModal, handleClose, handleFilterByCampus }) => { // �
                             onChange={handleCheckboxChange}
                         />
                         <Form.Check
-                            type="radio"
+                            type="checkbox"
                             label="ปัตตานี"
                             name="campus"
                             value="วิทยาเขตปัตตานี"
@@ -44,7 +48,7 @@ const FilterModal = ({ showModal, handleClose, handleFilterByCampus }) => { // �
                             onChange={handleCheckboxChange}
                         />
                         <Form.Check
-                            type="radio"
+                            type="checkbox"
                             label="สุราษฎร์ธานี"
                             name="campus"
                             value="วิทยาเขตสุราษฎร์ธานี"
@@ -52,7 +56,7 @@ const FilterModal = ({ showModal, handleClose, handleFilterByCampus }) => { // �
                             onChange={handleCheckboxChange}
                         />
                         <Form.Check
-                            type="radio"
+                            type="checkbox"
                             label="ตรัง"
                             name="campus"
                             value="วิทยาเขตตรัง"
@@ -60,7 +64,7 @@ const FilterModal = ({ showModal, handleClose, handleFilterByCampus }) => { // �
                             onChange={handleCheckboxChange}
                         />
                         <Form.Check
-                            type="radio"
+                            type="checkbox"
                             label="ภูเก็ต"
                             name="campus"
                             value="วิทยาเขตภูเก็ต"

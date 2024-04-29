@@ -2,12 +2,12 @@
   color: red;
 }
 .home-container {
-  text-align: center; /* กำหนดให้เนื้อหาอยู่ตรงกลาง */
+  text-align: center;
 }
 
 .home-search-bar {
   margin-bottom: 20px;
-  display: inline-block; /* เพื่อให้ Navbar และ Search bar อยู่ในบรรทัดเดียวกัน */
+  display: inline-block;
 }
 
 .home-title {
@@ -45,7 +45,7 @@
 }
 
 .search-input {
-  width: 70vw; /* เปลี่ยนเป็นหน่วย vw */
+  width: 70vw;
   max-width: 500px;
   padding: 10px;
   border: none;
@@ -74,8 +74,8 @@
 
 .course-cards-container {
   text-align: center;
-  margin: 8px auto; /* กำหนดให้มีช่องว่าง 8px ด้านบนและด้านล่าง และ Auto ที่ด้านซ้ายและด้านขวาเพื่อให้ตรงกลาง */
-  max-width: 800px; /* กำหนดความยาวสูงสุดเป็น 800px */
+  margin: 8px auto; 
+  max-width: 800px; 
 }
 
 .Btn-filter {
@@ -106,8 +106,8 @@
 
 .dropdown-button,
 .dropdown-content .dropdown-item {
-  width: 150px; /* เพิ่มความกว้าง */
-  height: 54px; /* เพิ่มความสูง */
+  width: 150px;
+  height: 54px; 
 }
 
 .dropdown-button {
@@ -144,22 +144,74 @@
 }
 
 .dropdown-button::after {
-  content: "\25BE"; /* Unicode character for down arrow */
+  content: "\25BE";
   margin-left: 5px;
 }
 
 .filter-icon {
-  /* ระยะห่างของไอคอนเพื่อให้เหมาะสมกับปุ่ม */
   margin-right: 5px;
-  /* สีของไอคอน */
   color: white;
-  /* ขนาดของไอคอน */
   font-size: 16px;
   width: 30px;
 }
 
 @media screen and (max-width: 768px) {
-  .search-input {
-    width: 90vw; /* ปรับขนาดให้ช่องค้นหายาวกว่าเมื่อหน้าจอเล็กลง */
+  .home-search-bar {
+    margin-bottom: 70px;
+    position: relative;
   }
+
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    color: #777;
+  }
+
+  .search-icon-remove {
+    position: absolute;
+    top: 48%;
+    transform: translateY(-50%);
+    right: 40px;
+    color: #777;
+  }
+
+  .search-input {
+    width: calc(330px - 10px);
+    max-width: 500px;
+    padding: 10px;
+    border: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding-left: 40px;
+    font-size: 16px;
+  }
+
+  .Btn-filter {
+    margin-top: 40px;
+    margin-bottom: 500px; 
+  }
+
+  .search-container {
+    position: relative; 
+  }
+
+  .dropdown-button {
+    position: absolute;
+    bottom: -75px; 
+    left: calc(50% + 100px); 
+    transform: translateX(-145%);
+    margin-top: 10px;
+    margin-bottom: 10px; 
+  }
+  .Btn-filter {
+    position: absolute;
+    bottom: -75px; 
+    right: 17%; 
+    transform: translateX(0); 
+    margin-bottom: 10px; 
+  }
+
 }
+
