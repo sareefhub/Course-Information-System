@@ -65,30 +65,38 @@
 }
 
 .container-subjects {
-    height: auto;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
-    margin-top: 40px;
-    background-color: #f0f2f5;
-    border: 1px solid #dddfe2;
-    border-radius: 8px;
     padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    background-color: #f2f2f2; 
+    transition: transform 0.3s ease;
+}
+
+.container-subjects:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .subject {
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: #fff; 
     border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
 }
 
 .subject-name {
-    font-size: 18px;
+    font-size: 1.2em;
     font-weight: bold;
+    color: #333;
 }
 
 .subject-instructor {
-    margin-top: 5px;
-    font-size: 16px;
+    font-style: italic;
+    color: #666;
 }
