@@ -1,0 +1,94 @@
+/* Review.css */
+.comment {
+    background-color: #f0f2f5;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.comment-user {
+    font-weight: bold;
+    color: #1877f2;
+    margin-bottom: 5px;
+}
+
+.comment-text {
+    word-wrap: break-word;
+}
+
+.comment-timestamp {
+    color: #606770;
+    font-size: 0.8em;
+}
+
+.comment-rating {
+    margin-top: 10px;
+}
+
+.comment-rating span {
+    color: #f39c12;
+    font-size: 1.2em;
+    margin-right: 3px;
+}
+
+.container-comments {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.review-container {
+    height: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color: #f0f2f5;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.review-textarea {
+    height: 150px; 
+}
+
+
+.review-input[type='text'],
+.review-textarea {
+    width: calc(100% - 40px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #dddfe2;
+    font-size: 0.9em;
+}
+
+.container-subjects {
+    height: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color: #f0f2f5;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.subject {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.subject-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.subject-instructor {
+    margin-top: 5px;
+    font-size: 16px;
+}
