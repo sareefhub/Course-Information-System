@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar/Navbar';
+import Conf from '../../config';
+import axios from 'axios';
 import './Review.css';
 
 const Review = () => {
@@ -7,9 +9,13 @@ const Review = () => {
     const [user, setUser] = useState('');
     const [text, setText] = useState('');
     const [rating, setRating] = useState(0);
-    const [subjects, setSubjects] = useState([
-        { id: 1, name: '001-103 IDEA TO ENTREPRENEURSHIP', instructor: 'กาญจนาถ จงภักดี' },
-    ]);
+    const [subjects, setSubjects] = useState([]);
+
+
+    const SectionLecturer = 'SectionLecturer';
+    const eduTerm = 1 ;
+    const eduYear = 2564 ;
+    const keySearch = '001-103' ;
 
     useEffect(() => {
         const fetchComments = async () => {
@@ -25,7 +31,26 @@ const Review = () => {
             }
         };
 
+        const fetchSubjects = async () => {
+            try {
+                const response = await axios.get(`${Conf.apiUrl}/${SectionLecturer}/${eduTerm}/${eduYear}?campusID=&facID=&deptID=&keySearch=${keySearch}&offset=0&limit=5`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'credential': Conf.apiKey
+                    }
+                });
+                if (response.data && response.data.data && Array.isArray(response.data.data)) {
+                    setSubjects(response.data.data);
+                } else {
+                    // Handle empty response or unexpected format
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
         fetchComments();
+        fetchSubjects();
     }, []);
 
     const handleCommentSubmit = async (e) => {
@@ -68,14 +93,15 @@ const Review = () => {
         <div>
             <Navbar />
             <div className="container-subjects">
-                <h2>Subjects</h2>
-                {subjects.map(subject => (
-                    <div key={subject.id} className="subject">
-                        <div className="subject-name">{subject.name}</div>
-                        <div className="subject-instructor">Instructor: {subject.instructor}</div>
-                    </div>
-                ))}
-            </div>
+            <h2>รีวิววิชา</h2>
+            {subjects.map(subject => (
+                <div key={subject.subjectId} className="subject">
+                    <div className="subject-name">{subject.subjectCode} {subject.shortNameEng}</div>
+                    <div className="subject-namethai">{subject.subjectNameThai}</div>
+                    <div className="subject-AJ">อาจารย์ {subject.lecturerNameThai} {subject.lecturerSnameThai}</div>
+                </div>
+            ))}
+        </div>
             <form className="review-container" onSubmit={handleCommentSubmit}>
                 <h2>Comments</h2>
                 <input

@@ -160,12 +160,14 @@ const Home = () => {
             <div className="course-cards-container">
                 {searchResults.map(course => (
                     <CourseCard 
-                    key={course.subjectId} 
+                    subjectId={course.subjectId} 
                     code={course.subjectCode} 
                     subjectNameEng={course.subjectNameEng} 
                     subjectNameThai={course.subjectNameThai} 
                     credit={course.credit}
                     campusThai={course.campusNameThai}
+                    eduTerm={course.eduTerm}
+                    eduYear={course.eduYear}
                     />
                 ))}
             </div>
