@@ -22,7 +22,10 @@
       "type": "string"
     },
     "rating": {
-      "type": "string"
+      "type": "integer",
+      "required": false,
+      "default": 0,
+      "max": 5
     }
   }
 }

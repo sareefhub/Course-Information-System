@@ -377,7 +377,14 @@ export interface ApiCommentComment extends Schema.CollectionType {
     user: Attribute.String;
     text: Attribute.Text;
     timestamp: Attribute.String;
-    rating: Attribute.String;
+    rating: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          max: 5;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
