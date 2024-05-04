@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { storeUser } from "../helpers";
-import LoginButton from './login/login';
+import LoginButton from './loginpsu/login';
 import Conf from "../config";
 import Swal from 'sweetalert2';
 

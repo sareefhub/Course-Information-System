@@ -4,7 +4,8 @@ import { AuthProvider } from './components/AuthProvider'; // import AuthProvider
 import Homepage from "../src/pages/home/Home";
 import Review from './pages/review/Review';
 import Login from './auth/login';
-import LoginCallbackPage from './auth/login/LoginCallbackPage';
+import Register from './auth/register';
+import LoginCallbackPage from './auth/loginpsu/LoginCallbackPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
           <Route path="/logincallback" element={<LoginCallbackPage />} />
           <Route path="/review/:eduTerm/:eduYear/:code" element={<Review />} />
         </Routes>
