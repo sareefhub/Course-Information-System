@@ -4,7 +4,7 @@ import './CourseCard.css';
 
 const CourseCard = ({code, subjectNameEng, subjectNameThai, credit, campusThai ,eduTerm , eduYear}) => {
     return (
-        <Link to={`/review/${eduTerm}/${eduYear}/${code}`} className="course-card"> {/* ใช้ Link และส่งชื่อวิชาไปที่ URL */}
+        <Link to={`/review/${eduTerm}/${eduYear}/${code}`} className="course-card">
             <div className="card-glow"></div>
             <div className="card-border-glow"></div>
             <div className="card-title">{code} {subjectNameEng}</div>

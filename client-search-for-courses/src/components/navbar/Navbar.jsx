@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
-import './Navbar.css';
+import React, { useState , useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Navbar.css';
 
 function Navbar() {
   const [isChecked, setIsChecked] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
   };
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    navigate("/");
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    setIsLoggedIn(storedUser ? true : false);
+  }, []);
 
   return (
     <nav className="navbar navbar-expand-lg">
@@ -38,8 +57,12 @@ function Navbar() {
             </li>
           </ul>
           <div className="ml-auto">
-            <button className="btn btn-primary">เข้าสู่ระบบ</button>
-          </div>
+          {isLoggedIn ? (
+            <button onClick={handleLogout}>ออกจากระบบ</button>
+          ) : (
+            <button onClick={() => handleNavigation("/login")}>เข้าสู่ระบบ</button>
+          )}
+        </div>
         </div>
       </div>
     </nav>

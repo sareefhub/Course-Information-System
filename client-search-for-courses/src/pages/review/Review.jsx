@@ -23,7 +23,15 @@ const Review = () => {
                     throw new Error('Failed to fetch comments');
                 }
                 const commentsData = await response.json();
-                setComments(commentsData.data);
+                
+                // Filter comments by eduTerm, eduYear, and code
+                const filteredComments = commentsData.data.filter(comment => 
+                    comment.attributes.eduTerm === parseInt(eduTerm) &&
+                    comment.attributes.eduYear === parseInt(eduYear) &&
+                    comment.attributes.subjectCode === code
+                );
+                
+                setComments(filteredComments);
             } catch (error) {
                 console.error('Error fetching comments:', error.message);
             }
@@ -53,8 +61,8 @@ const Review = () => {
 
     const handleCommentSubmit = async (e) => {
         e.preventDefault();
-        if (!user || !text || !rating) return;
-
+        if (!user || !text || !rating || !eduTerm || !eduYear || !code) return;
+    
         const timestamp = new Date().toISOString();
         const data = {
             user,
@@ -63,22 +71,24 @@ const Review = () => {
             rating,
             createdAt: timestamp,
             updatedAt: timestamp,
-            publishedAt: timestamp
+            publishedAt: timestamp,
+            eduTerm,
+            eduYear,
+            subjectCode: code
         };
-
+    
         try {
-            const response = await fetch('http://localhost:1337/api/comments', {
-                method: 'POST',
+            const response = await axios.post('http://localhost:1337/api/comments', { data }, {
                 headers: {
                     'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ data }),
+                }
             });
-            if (!response.ok) {
+    
+            if (!response.data) {
                 throw new Error('Failed to post comment');
             }
-            const responseData = await response.json();
-            setComments([...comments, responseData.data]);
+    
+            setComments([...comments, response.data.data]);
             setUser('');
             setText('');
             setRating(0);
@@ -86,20 +96,49 @@ const Review = () => {
             console.error('Error posting comment:', error.message);
         }
     };
+    
+        // สร้างอาร์เรย์เพื่อเก็บข้อมูลของวิชาทั้งหมด
+    const uniqueSubjects = [];
+
+        // หาชื่อวิชาที่ไม่ซ้ำกัน
+    subjects.forEach(subject => {
+        const existingSubject = uniqueSubjects.find(item => item.subjectCode === subject.subjectCode);
+        if (!existingSubject) {
+            uniqueSubjects.push(subject);
+        }
+    });
+
+    const lecturersBySubject = {};
+
+    // จัดกลุ่มอาจารย์ตามชื่อวิชา
+    subjects.forEach(subject => {
+        if (!lecturersBySubject[subject.subjectCode]) {
+            lecturersBySubject[subject.subjectCode] = [];
+        }
+        lecturersBySubject[subject.subjectCode].push({
+            lecturerNameThai: subject.lecturerNameThai,
+            lecturerSnameThai: subject.lecturerSnameThai
+        });
+    });
 
     return (
         <div>
             <Navbar />
             <div className="container-subjects">
                 <h2>รีวิววิชา</h2>
-                {subjects.map(subject => (
-                    <div key={subject.subjectId} className="subject">
-                        <div className="subject-name">{subject.subjectCode} {subject.shortNameEng}</div>
-                        <div className="subject-AJ">Section {subject.section}</div>
-                        <div className="subject-namethai">{subject.subjectNameThai}</div>
-                        <div className="subject-AJ">อาจารย์ {subject.lecturerNameThai} {subject.lecturerSnameThai}</div>
-                    </div>
+                {uniqueSubjects.map(subject => (
+            <div key={subject.subjectId} className="subject">
+                <div className="subject-name">{subject.subjectCode} {subject.shortNameEng}</div>
+                <div className="subject-namethai">{subject.subjectNameThai}</div>
+                <div className="subject-AJ">Section {subject.section}</div>
+                {Object.keys(lecturersBySubject).map(subjectCode => (
+            <div key={subjectCode}>
+                {lecturersBySubject[subjectCode].map((lecturer, index) => (
+                    <div key={index}>อาจารย์ {lecturer.lecturerNameThai} {lecturer.lecturerSnameThai}</div>
                 ))}
+            </div>
+        ))}            </div>
+        ))}
             </div>
             <form className="review-container" onSubmit={handleCommentSubmit}>
                 <h2>Comments</h2>
@@ -134,8 +173,8 @@ const Review = () => {
                 {comments.map((comment) => (
                     <div className="comment" key={comment.id}>
                         <div className="comment-user">{comment.attributes.user}</div>
-                        <div className="comment-text">{comment.attributes.text}</div>
                         <div className="comment-timestamp">{new Date(comment.attributes.timestamp).toLocaleString()}</div>
+                        <div className="comment-text">{comment.attributes.text}</div>
                         <div className="comment-rating">
                             {[...Array(comment.attributes.rating)].map((_, index) => (
                                 <span key={index} role="img" aria-label="star">⭐</span>
