@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Link , useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import Conf from "../config";
+import Navbar from '../components/navbar/Navbar';
+import './register.css'
 
 const initialUser = { name: "", username: "", email: "", password: "", confirmPassword: "" };
 const Registration = () => {
@@ -61,11 +63,13 @@ const Registration = () => {
 
   return (
     <div>
-      <div className="login-page">
-        <div className="login-container">
+      <Navbar />
+      <div className="register-page">
+        <div className="register-container">
           <div className="form-container">
             <h2>สมัครสมาชิก</h2>
             <div className="form-group">
+              <label>ชื่อ :</label>
               <input
                 type="text"
                 name="name"
@@ -76,6 +80,7 @@ const Registration = () => {
               />
             </div>
             <div className="form-group">
+              <label>บัญชีผู้ใช้ :</label>
               <input
                 type="text"
                 name="username"
@@ -86,6 +91,7 @@ const Registration = () => {
               />
             </div>
             <div className="form-group">
+            <label>อีเมลล์ :</label>
               <input
                 type="email"
                 name="email"
@@ -96,6 +102,7 @@ const Registration = () => {
               />
             </div>
             <div className="form-group">
+              <label>รหัสผ่าน :</label>
               <input
                 type="password"
                 name="password"
@@ -106,6 +113,7 @@ const Registration = () => {
               />
             </div>
             <div className="form-group">
+              <label>ยืนยันรหัสผ่าน :</label>
               <input
                 type="password"
                 name="confirmPassword"
@@ -115,10 +123,12 @@ const Registration = () => {
                 className="form-input"
               />
             </div>
-            <button className="btn-primary" onClick={signUp}>
+            <div className="ml-auto">
+            <button className="register-btn-primary" onClick={signUp}>
               สมัครสมาชิก
             </button>
-            <div className="link-to-register">
+            </div>
+            <div className="link-to-login">
               <div>มีบัญชีแล้ว <Link to="/login">เข้าสู่ระบบ</Link> </div>
             </div>
           </div>

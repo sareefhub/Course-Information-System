@@ -37,7 +37,9 @@ const LoginButton = () => {
       {isLoggedIn ? (
         <button onClick={handleLogout}>ออกจากระบบ</button>
       ) : (
-        <button onClick={handleLogin}>เข้าสู่ระบบ โดย PSU PASSPORT</button>
+        <button onClick={handleLogin}> 
+        เข้าสู่ระบบ โดย <img src={require("../../images/psupassport.png")} alt="Logo" width="100px" height="40px"/>
+        </button>
       )}
     </div>
   );

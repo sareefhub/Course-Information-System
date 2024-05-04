@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { storeUser } from "../helpers";
 import LoginButton from './loginpsu/login';
 import Conf from "../config";
 import Swal from 'sweetalert2';
+import Navbar from '../components/navbar/Navbar';
+import './login.css'
+
 
 const initialUser = { password: "", identifier: "" };
 
@@ -46,31 +49,40 @@ const Login = () => {
 
 
   return (
-    <div className="login">
-      <h2>Login:</h2>
-      <div>
-        <input
-          type="email"
-          name="identifier"
-          value={user.identifier}
-          onChange={handleChange}
-          placeholder="Enter your email"
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          name="password"
-          value={user.password}
-          onChange={handleChange}
-          placeholder="Enter password"
-        />
-      </div>
-      <button className="ml-auto" onClick={handleLogin}>
-        Login
-      </button>
-      <div className="ml-auto">
-            <LoginButton />
+    <div className="login-container">
+      <Navbar />
+      <div className="login-form">
+        <h2>เข้าสู่ระบบ</h2>
+        <div>
+          <label>อีเมล :</label>
+          <input
+            type="email"
+            name="identifier"
+            value={user.identifier}
+            onChange={handleChange}
+            placeholder="Enter your email"
+            />
+        </div>
+        <div>
+          <label>รหัสผ่าน :</label>
+          <input
+            type="password"
+            name="password"
+            value={user.password}
+            onChange={handleChange}
+            placeholder="Enter password"
+          />
+        </div>
+        <div className="ml-auto">
+          <button  onClick={handleLogin}>Login</button>
+        </div>
+        <div className="link-to-register">
+              <div>ยังไม่มีบัญชีใช่ไหม? <Link to="/register">สมัครตรงนี้</Link> </div>
+        </div>
+        <hr />
+        <div className="ml-auto">
+          <LoginButton />
+        </div>
       </div>
     </div>
   );
