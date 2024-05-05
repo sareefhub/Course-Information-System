@@ -64,39 +64,7 @@
     font-size: 0.9em;
 }
 
-.container-subjects {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
-    background-color: #f2f2f2; 
-    transition: transform 0.3s ease;
-}
-
-.container-subjects:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.subject {
-    background-color: #fff; 
-    border-radius: 5px;
-    margin-bottom: 15px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    transition: transform 0.3s ease;
-}
-
-.subject-name {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #333;
-}
-
-.subject-instructor {
-    font-style: italic;
-    color: #666;
+.login-required {
+    text-align: center;
+    margin-top: 20px; 
 }
