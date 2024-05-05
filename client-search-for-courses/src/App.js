@@ -5,6 +5,7 @@ import Homepage from "../src/pages/home/Home";
 import Review from './pages/review/Review';
 import Login from './auth/login';
 import Register from './auth/register';
+import SubjectDetail from './pages/SubjectDetail/SubjectDetail';
 import LoginCallbackPage from './auth/loginpsu/LoginCallbackPage';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Homepage/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
+          <Route path="/SubjectDetail/:eduTerm/:eduYear/:code" element={<SubjectDetail/>} />
           <Route path="/logincallback" element={<LoginCallbackPage />} />
           <Route path="/review/:eduTerm/:eduYear/:code" element={<Review />} />
         </Routes>
