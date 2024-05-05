@@ -1,13 +1,14 @@
-// LoginButton.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import config from '../../config'; 
 
 const LoginButton = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem('jwtToken');
+    const token = localStorage.getItem('accessToken');
     setIsLoggedIn(!!token);
   }, []);
 
@@ -15,31 +16,25 @@ const LoginButton = () => {
     const authUrl = `${config.authUrl}?client_id=${config.clientId}&redirect_uri=${window.location.origin}/logincallback&response_type=code`;
     window.location.href = authUrl;
   };
-  
 
-  const handleLogout = async () => {
-    try {
-      const accessToken = localStorage.getItem('accessToken');
-      await axios.post(`${config.accessTokenUrl}/logout`, null, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      localStorage.removeItem('accessToken');
-      setIsLoggedIn(false);
-    } catch (error) {
-      console.error('เกิดข้อผิดพลาดในการออกจากระบบ:', error);
-    }
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    setIsLoggedIn(false);
+    navigate("/");
+    window.location.reload();
   };
+
+  useEffect(() => {
+    const storedaccessToken = localStorage.getItem("accessToken");
+    setIsLoggedIn(storedaccessToken ? true : false);
+  }, []);
 
   return (
     <div>
       {isLoggedIn ? (
         <button onClick={handleLogout}>ออกจากระบบ</button>
       ) : (
-        <button onClick={handleLogin}> 
-        เข้าสู่ระบบ โดย <img src={require("../../images/psupassport.png")} alt="Logo" width="100px" height="40px"/>
-        </button>
+        <button onClick={handleLogin}>เข้าสู่ระบบ</button>
       )}
     </div>
   );
