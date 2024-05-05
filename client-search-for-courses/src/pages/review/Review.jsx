@@ -18,7 +18,7 @@ const Review = () => {
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const response = await fetch('http://localhost:1337/api/comments');
+                const response = await fetch(`${Conf.apiUrls}/comments`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch comments');
                 }
@@ -78,7 +78,7 @@ const Review = () => {
         };
     
         try {
-            const response = await axios.post('http://localhost:1337/api/comments', { data }, {
+            const response = await axios.post(`${Conf.apiUrls}/comments`, { data }, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -97,10 +97,8 @@ const Review = () => {
         }
     };
     
-        // สร้างอาร์เรย์เพื่อเก็บข้อมูลของวิชาทั้งหมด
     const uniqueSubjects = [];
 
-        // หาชื่อวิชาที่ไม่ซ้ำกัน
     subjects.forEach(subject => {
         const existingSubject = uniqueSubjects.find(item => item.subjectCode === subject.subjectCode);
         if (!existingSubject) {
@@ -110,7 +108,6 @@ const Review = () => {
 
     const lecturersBySubject = {};
 
-    // จัดกลุ่มอาจารย์ตามชื่อวิชา
     subjects.forEach(subject => {
         if (!lecturersBySubject[subject.subjectCode]) {
             lecturersBySubject[subject.subjectCode] = [];
