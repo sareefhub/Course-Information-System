@@ -8,6 +8,7 @@ import Navbar from '../../components/navbar/Navbar';
 const SubjectDetail = () => {
     const { eduTerm, eduYear, code } = useParams();
     const [subject, setSubject] = useState(null);
+    const [lecturer, setLecturer] = useState(null);
 
     useEffect(() => {
         const fetchSubject = async () => {
@@ -28,8 +29,29 @@ const SubjectDetail = () => {
             }
         };
 
+        const fetchLecturer = async () => {
+            try {
+                const response = await axios.get(`${Conf.apiUrl}/SectionLecturer/${eduTerm}/${eduYear}/${subject.subjectId}?campusID=&facID=&deptID=&keySearch=`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'credential': Conf.apiKey
+                    }
+                });
+                if (response.data && response.data.data && response.data.data.length > 0) {
+                    setLecturer(response.data.data[0]);
+                } else {
+                    console.error('No data found');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
         fetchSubject();
-    }, [eduTerm, eduYear, code]);
+        if (subject) {
+            fetchLecturer();
+        }
+    }, [eduTerm, eduYear, code, subject]);
 
     return (
         <div>
@@ -38,52 +60,101 @@ const SubjectDetail = () => {
                 <Grid container spacing={2}>
                     {subject && (
                         <Grid item xs={12}>
-                            <Card sx={{ marginBottom: 2, backgroundColor: '#f5f5f5' }}>
-                                <CardContent>
-                                    <Typography variant="h6">
-                                        Subject Code: {subject.subjectCode}
+                            <Card sx={{ marginBottom: 2, marginTop: 2, backgroundColor: '#e6f2ff', color: 'black' }}>
+                                <CardContent sx={{ textAlign: 'left' }}>
+                                    <Typography variant="h4" sx={{ marginBottom: 0.5, fontWeight: 'bold' }}>
+                                        {subject.subjectCode} {subject.shortNameEng}
                                     </Typography>
                                     <Typography variant="body1">
-                                        English Name: {subject.shortNameEng}
+                                        {subject.subjectNameThai}
                                     </Typography>
-                                    <Typography variant="body1">
-                                        Thai Name: {subject.subjectNameThai}
-                                    </Typography>
-                                    <Typography variant="body1">
+                                    <Typography variant="body1" sx={{ opacity: 0.7 }}>
                                         Credit: {subject.credit}
                                     </Typography>
-                                    <Typography variant="body1">
-                                        Section: {subject.section}
+                                </CardContent>
+                            </Card>
+                            <Grid container spacing={2}>
+                                <Grid item xs={3}>
+                                    <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
+                                        Section
                                     </Typography>
+                                </Grid>
+                                <Grid item xs={9}>
                                     <Typography variant="body1">
-                                        Campus: {subject.campusNameThai}
+                                        {subject.section}
                                     </Typography>
+                                </Grid>
+                                <Grid item xs={3}>
+                                    <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
+                                        Campus
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={9}>
                                     <Typography variant="body1">
-                                        Faculty: {subject.facNameThai}
+                                        {subject.campusNameThai}
                                     </Typography>
+                                </Grid>
+                                <Grid item xs={3}>
+                                    <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
+                                        Faculty
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={9}>
                                     <Typography variant="body1">
-                                        Department: {subject.deptNameThai}
+                                        {subject.facNameThai}
                                     </Typography>
+                                </Grid>
+                                <Grid item xs={3}>
+                                    <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
+                                        Department
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={9}>
                                     <Typography variant="body1">
-                                        Student Group: {subject.studentGroup}
+                                        {subject.deptNameThai}
                                     </Typography>
+                                </Grid>
+                                <Grid item xs={3}>
+                                    <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
+                                        Student Group
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={9}>
                                     <Typography variant="body1">
-                                        Section Status: {subject.sectionStatus}
+                                        {subject.studentGroup}
                                     </Typography>
+                                </Grid>
+                                <Grid item xs={3}>
+                                    <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
+                                        Section Status
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={9}>
+                                    <Typography variant="body1" sx={{ color: 'black' }}>
+                                        {subject.sectionStatus}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={3}>
+                                    <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
+                                        Lecturer
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={9}>
                                     <Typography variant="body1">
-                                        Lecturer: {subject.lecturerNameThai} {subject.lecturerSnameThai}
+                                        {lecturer && `${lecturer.lecturerNameThai} ${lecturer.lecturerSnameThai}`}
                                     </Typography>
+                                </Grid>
+                                <Grid item xs={12} sx={{ textAlign: 'right' }}>
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        sx={{ marginTop: 2 }}
                                         component="a"
                                         href={`/review/${eduTerm}/${eduYear}/${code}`}
                                     >
                                         Review
                                     </Button>
-                                </CardContent>
-                            </Card>
+                                </Grid>
+                            </Grid>
                         </Grid>
                     )}
                 </Grid>
