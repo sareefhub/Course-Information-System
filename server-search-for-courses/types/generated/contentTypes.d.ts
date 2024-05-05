@@ -385,6 +385,9 @@ export interface ApiCommentComment extends Schema.CollectionType {
         number
       > &
       Attribute.DefaultTo<0>;
+    subjectCode: Attribute.String;
+    eduTerm: Attribute.Integer;
+    eduYear: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

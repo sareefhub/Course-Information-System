@@ -18,11 +18,11 @@ const Review = () => {
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const response = await fetch(`${Conf.apiUrls}/comments`);
-                if (!response.ok) {
+                const response = await axios.get(`${Conf.apiUrls}/comments`);
+                if (response.status !== 200) {
                     throw new Error('Failed to fetch comments');
                 }
-                const commentsData = await response.json();
+                const commentsData = response.data;
                 
                 // Filter comments by eduTerm, eduYear, and code
                 const filteredComments = commentsData.data.filter(comment => 
