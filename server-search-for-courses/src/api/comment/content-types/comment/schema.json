@@ -26,6 +26,15 @@
       "required": false,
       "default": 0,
       "max": 5
+    },
+    "subjectCode": {
+      "type": "string"
+    },
+    "eduTerm": {
+      "type": "integer"
+    },
+    "eduYear": {
+      "type": "integer"
     }
   }
 }
