@@ -4,6 +4,7 @@ import Navbar from '../../components/navbar/Navbar';
 import Conf from '../../config';
 import axios from 'axios';
 import Subject from '../../components/subject/Subject';
+import { Rating } from '@mui/material';
 import './Review.css';
 
 const Review = () => {
@@ -35,7 +36,6 @@ const Review = () => {
 
         fetchComments();
     }, [eduTerm, eduYear, code]);
-
 
     const handleCommentSubmit = async (e) => {
         e.preventDefault();
@@ -100,16 +100,13 @@ const Review = () => {
                         onChange={(e) => setText(e.target.value)}
                     ></textarea>
                     <div>
-                        {[...Array(5)].map((_, index) => (
-                            <span
-                                key={index}
-                                role="button"
-                                onClick={() => setRating(index + 1)}
-                                style={{ cursor: 'pointer' }}
-                            >
-                                {index < rating ? "⭐" : "☆"}
-                            </span>
-                        ))}
+                        <Rating
+                            name="simple-controlled"
+                            value={rating}
+                            onChange={(event, newValue) => {
+                                setRating(newValue);
+                            }}
+                        />
                     </div>
                     <button className="Btn-filter" type="submit">Post Comment</button>
                 </form>
@@ -123,9 +120,7 @@ const Review = () => {
                         <div className="comment-timestamp">{new Date(comment.attributes.timestamp).toLocaleString()}</div>
                         <div className="comment-text">{comment.attributes.text}</div>
                         <div className="comment-rating">
-                            {[...Array(comment.attributes.rating)].map((_, index) => (
-                                <span key={index} role="img" aria-label="star">⭐</span>
-                            ))}
+                            <Rating name="read-only" value={comment.attributes.rating} readOnly />
                         </div>
                     </div>
                 ))}
