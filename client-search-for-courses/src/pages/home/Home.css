@@ -104,22 +104,11 @@
   display: inline-block;
 }
 
-.dropdown-button,
 .dropdown-content .dropdown-item {
   width: 150px;
   height: 54px; 
 }
 
-.dropdown-button {
-  margin: 4px;
-  padding: 0 10px;
-  border: none;
-  border-radius: 5px;
-  background-image: linear-gradient(to right, #007bff, #4e73df);
-  color: white;
-  cursor: pointer;
-  transition: background-image 0.3s ease;
-}
 
 .dropdown-content {
   display: none;
@@ -148,6 +137,20 @@
   margin-left: 5px;
 }
 
+.dropdown-toggle.btn.btn-primary.btn-lg,
+.dropdown-button.dropdown {
+  width: 150px;
+  height: 54px; 
+  margin: 10px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #007bff, #4e73df);
+  color: white;
+  cursor: pointer;
+  transition: background-image 0.3s ease;
+}
+
 .filter-icon {
   margin-right: 5px;
   color: white;
@@ -155,30 +158,31 @@
   width: 30px;
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
+  .home-title {
+    font-size: 16px; 
+  }
+
   .home-search-bar {
-    margin-bottom: 70px;
+    margin-bottom: 0px;
+    display: inline-block;
+  }
+
+  .form-search {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .search-container {
     position: relative;
-  }
-
-  .search-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 10px;
-    color: #777;
-  }
-
-  .search-icon-remove {
-    position: absolute;
-    top: 48%;
-    transform: translateY(-50%);
-    right: 40px;
-    color: #777;
+    display: inline-block;
+    align-items: center;
+    margin-bottom: 10px; 
   }
 
   .search-input {
-    width: calc(330px - 10px);
+    width: 80vw;
     max-width: 500px;
     padding: 10px;
     border: none;
@@ -188,30 +192,28 @@
     font-size: 16px;
   }
 
+  .dropdown-toggle.btn.btn-primary.btn-lg {
+    width: 100%;
+  }
+
   .Btn-filter {
-    margin-top: 40px;
-    margin-bottom: 500px; 
+    margin: 20px;
+    height: 54px;
+    padding: 0 10px;
+    font-size: 16px;
+    border: none; 
+    border-radius: 5px; 
+    background-image: linear-gradient(to right, #007bff, #4e73df);
+    color: white; 
+    cursor: pointer; 
+    transition: background-image 0.3s ease;
   }
-
-  .search-container {
-    position: relative; 
+  
+  .Btn-filter:hover {
+    background-image: linear-gradient(to right, #4e73df, #007bff); 
   }
-
-  .dropdown-button {
-    position: absolute;
-    bottom: -75px; 
-    left: calc(50% + 100px); 
-    transform: translateX(-145%);
-    margin-top: 10px;
-    margin-bottom: 10px; 
+  
+  .Btn-filter::after {
+    margin-left: 5px; 
   }
-  .Btn-filter {
-    position: absolute;
-    bottom: -75px; 
-    right: 17%; 
-    transform: translateX(0); 
-    margin-bottom: 10px; 
-  }
-
 }
-

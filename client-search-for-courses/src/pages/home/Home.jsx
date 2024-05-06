@@ -119,7 +119,7 @@ const Home = () => {
                             maxLength={30}
                         />
                     </div>
-                    <DropdownButton className="dropdown-button" size="lg" title={selectedTerm && selectedYear ? `${selectedTerm}/${selectedYear}` : "เทอม/ปี"}>
+                    <DropdownButton size="lg" title={selectedTerm && selectedYear ? `${selectedTerm}/${selectedYear}` : "เทอม/ปี"}>
                             {thaiYears.map((year) => (
                                 terms.reverse().map((term, termIndex) => (
                                 <Dropdown.Item 
