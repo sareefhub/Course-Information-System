@@ -1,0 +1,12 @@
+.title-student-card {
+  font-family: "Mitr", sans-serif;
+  background-color: #e6f2ff;
+  margin-bottom: 8px; /* เพิ่มระยะห่างด้านล่างของ Card */
+  margin-top: 8px; /* เพิ่มระยะห่างด้านบนของ Card */
+  color: black;
+}
+
+.title-student-card .title {
+  margin-bottom: 4px; /* เพิ่มระยะห่างด้านล่างของข้อความหัวข้อ */
+  font-weight: bold;
+}
