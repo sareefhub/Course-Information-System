@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap');
+
+.title-fanpage{
+    font-size: 22px;
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+    font-family: "Mitr", sans-serif;
+}
+
+.title-fanpage hr {
+    color: #000; 
+    width: 50%; 
+    margin: auto;
+}
+
+
+.custom-container{
+    margin-top: 30px;
+    margin-left: 110px;
+    margin-right: 110px;
+}
+
+.input-filter-fanpage{
+    margin-bottom: 200px;
+}
+
+.select-filter-fanpage{
+    margin-bottom: 20px;
+    margin-top: 25px;
+
+}
+
+.fanpage-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+  
+.custom-card {
+    flex: 0 0 calc(25% - 20px);
+    margin: 10px;
+    max-width: calc(25% - 20px);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit; 
+}
+
+.custom-card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+  
+.fanpage-link {
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+}
+  
+.fanpage-link:hover {
+    text-decoration: underline;
+}
+
+.custom-card img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.Pagination-fanpage {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .Pagination-fanpage .MuiPagination-root {
+    margin: 0 auto;
+  }
+
+@media (max-width: 1200px) {
+      .custom-card {
+        flex: 0 0 calc(33.3333% - 20px);
+        max-width: calc(33.333% - 20px);
+      }
+      .custom-card img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          object-position: center;
+      }
+}
+
+@media (max-width: 900px) {
+    .custom-card {
+      flex: 0 0 calc(50% - 20px);
+      max-width: calc(50% - 20px);
+    }
+    .custom-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+  
+@media (max-width: 600px) {
+    .title-fanpage{
+        font-size: 20px;
+        text-align: center;
+    }
+    .custom-container{
+        margin-top: 30px;
+        margin-left: 9px;
+        margin-right: 9px;
+    }
+    .custom-card {
+      flex: 0 0 calc(50% - 20px);
+      max-width: calc(50% - 20px);
+    }
+    .custom-card img {
+        width: 100%;
+        height: 135px;
+        object-fit: cover;
+        object-position: center;
+    }
+    .Pagination-fanpage .MuiPagination-ul {
+        flex-wrap: wrap;
+      }
+      
+      .Pagination-fanpage .MuiPaginationItem-root {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        text-align: center;
+      }
+}
+  
