@@ -52,7 +52,7 @@ const Subject = () => {
 
     return (
             <div className="container-subjects">
-                <h2>รีวิววิชา</h2>
+                <div className='title-subject'>รีวิวรายวิชา</div>
                 {uniqueSubjects.map(subject => (
                     <div key={subject.subjectId} className="subject">
                         <div className="subject-name">{subject.subjectCode} {subject.shortNameEng}</div>

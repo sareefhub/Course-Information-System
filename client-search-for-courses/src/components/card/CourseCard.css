@@ -52,6 +52,7 @@
     z-index: 5;
     white-space: nowrap;
     text-overflow: ellipsis; /* แสดงเครื่องหมาย ... หากข้อความเกินขอบเขตของการ์ด */
+    font-family: "Mitr", sans-serif;
 }
 
 .card-body {
@@ -61,6 +62,7 @@
     transition: transform 300ms ease;
     z-index: 5;
     text-overflow: ellipsis;
+    font-family: "Mitr", sans-serif;
 }
 
 .card-campus {
@@ -79,6 +81,7 @@
     border-radius: 5px;
     padding: 2px 5px; /* เพิ่ม padding เพื่อให้กรอบสีเหลี่ยมห่างจากตัวอักษร */
     background-color: #32a6ff;
+    font-family: "Mitr", sans-serif;
 }
 
 

@@ -1,6 +1,12 @@
 .title-error-handleSubmit{
   color: red;
+  font-family: "Mitr", sans-serif;
 }
+
+.text-class{
+  font-family: "Mitr", sans-serif;
+}
+
 .home-container {
   text-align: center;
 }
@@ -14,6 +20,7 @@
   margin-top: 30px;
   margin-bottom: 10px;
   font-size: 20px;
+  font-family: "Mitr", sans-serif;
 }
 
 .form-search{
@@ -70,6 +77,7 @@
   border-image: linear-gradient(to right, #007bff, #4e73df);
   border-image-slice: 1;
   border-radius: 5px;
+  font-family: "Mitr", sans-serif;
 }
 
 .course-cards-container {
@@ -102,11 +110,12 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  font-family: "Mitr", sans-serif;
 }
 
 .dropdown-content .dropdown-item {
   width: 150px;
-  height: 54px; 
+  height: 54px;
 }
 
 

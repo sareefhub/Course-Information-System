@@ -147,12 +147,12 @@ const Home = () => {
             )}
             {searchResults.length > 0 && (
                 <div className="search-results-info">
-                    <div>พบเจอ {searchResults.length} วิชา</div>
+                    <div className='text-class'> พบเจอ {searchResults.length} วิชา</div>
                 </div>
             )}
             {searchResults.length === 0 && !errorMessage && !loading && (
                 <div className="no-results-message">
-                    <div>ไม่พบรายวิชาที่ค้นหา</div>
+                    <div className='text-class'> ไม่พบรายวิชาที่ค้นหา</div>
                 </div>
             )}
             {loading && <Loader />}
