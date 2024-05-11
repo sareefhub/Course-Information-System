@@ -23,6 +23,10 @@
     align-items: center;
 }
 
+.nav-link{
+  font-family: "Mitr", sans-serif;
+}
+
 .navbar-toggle {
     display: none;
 }

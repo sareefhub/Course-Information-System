@@ -8,7 +8,7 @@ import CourseCard from '../../components/card/CourseCard';
 import Loader from '../../components/loader/Loader';
 import Conf from '../../config';
 import FilterModal from '../../components/filterModal/filterModal';
-import './Home.css';
+import './searchSubject.css';
 
 const Home = () => {
     const [searchTerm, setSearchTerm] = useState('');

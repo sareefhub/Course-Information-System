@@ -1,0 +1,121 @@
+.reviewpage-contrainer {
+    font-family: "Mitr", sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+.reviewpage-contrainer {
+    font-family: "Mitr", sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+.reviewpage-contrainer h3 {
+    font-size: 30px;
+    color: #4e73df;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.reviewpagecard-link {
+    text-decoration: none;
+}
+
+.reviewpage-card {
+    border: 3px solid #4e73df; /* สีเขียว */
+    border-radius: 20px;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f8f9fc; /* สีเทาอ่อน */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.reviewpage-card:hover {
+    transform: translateY(-5px);
+}
+
+.reviewpage-card h3 {
+    font-size: 20px;
+    color: #4e73df; /* สีเขียว */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.reviewpage-card p {
+    font-size: 18px;
+    color: #555; /* สีเทาเข้ม */
+    text-align: center;
+}
+
+
+
+.search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .search-bar button {
+    background-color: #ff0000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .search-bar button:hover {
+    background-color: #690000;
+  }
+
+
+.reviewpage-dropdown{
+    text-align: right;
+}
+
+
+.reviewpage-dropdown {
+    margin: 10px;
+    margin-bottom: 10px;
+    font-family: "Mitr", sans-serif;
+    margin-top: auto;
+}
+
+.reviewpage-dropdown select {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    outline: none;
+    transition: border-color 0.3s;
+    font-family: "Mitr", sans-serif;
+}
+
+
+.reviewpage-dropdown select:focus {
+    border-color: #007bff;
+}
+
+.reviewpage-dropdown label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+  

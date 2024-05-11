@@ -45,13 +45,13 @@ function Navbar() {
         <div className={`collapse navbar-collapse ml-auto ${isChecked ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link" href="/home">Home</a>
+              <a className="nav-link" href="/searchSubject">ค้นหารายวิชา</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/about-us">About Us</a>
+              <a className="nav-link" href="/review">รีวิวรายวิชา</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/info">INFO</a>
+              <a className="nav-link" href="/fanpage">แฟนเพจต่างๆ</a>
             </li>
           </ul>
           <div className="ml-auto">
