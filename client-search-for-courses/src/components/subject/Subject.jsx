@@ -4,7 +4,7 @@ import Conf from '../../config';
 import axios from 'axios';
 import './Subject.css';
 
-const Subject = () => {
+const Subject = ({ setSubjectData }) => {
     const [subjects, setSubjects] = useState([]);
     const { eduTerm, eduYear, code } = useParams();
 
@@ -19,6 +19,7 @@ const Subject = () => {
                 });
                 if (response.data && response.data.data && Array.isArray(response.data.data)) {
                     setSubjects(response.data.data);
+                    setSubjectData(response.data.data[0]);
                 } else {
                 }
             } catch (error) {
@@ -27,7 +28,7 @@ const Subject = () => {
         };
 
         fetchSubjects();
-    }, [eduTerm, eduYear, code]);
+    }, [eduTerm, eduYear, code , setSubjectData]);
     
     const uniqueSubjects = [];
 

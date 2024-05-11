@@ -1,0 +1,149 @@
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.left-side h1,
+.left-side p ,
+.btn-page-1 ,
+.btn-page-2,
+.right-side img {
+    animation: slideIn 1s ease forwards;
+}
+
+.container-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../../images/BG.png');
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 30px;
+    width: 80%;
+    margin: auto;
+    margin-top: 210px;
+    background-size: cover;
+    background: linear-gradient(rgba(255, 255, 255, rgba(0, 0, 0, 0.5), 10));
+    backdrop-filter: blur(100px);
+}
+
+
+
+.right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-side img {
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.left-side h1 {
+    font-size: 50px;
+    font-family: "Mitr", sans-serif;
+
+}
+
+.left-side p {
+    font-size: 30px;
+    font-family: "Mitr", sans-serif;
+    color: #0055ff;
+
+}
+
+.btn-page-1 {
+    margin: 8px;
+    height: 60px;
+    width: 250px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none; 
+    border-radius: 10px; 
+    background-image: linear-gradient(to right, #007bff, #4e73df);
+    color: white; 
+    cursor: pointer; 
+    transition: background-image 0.3s ease;
+    font-family: "Mitr", sans-serif;
+  }
+  
+  .btn-page-1:hover {
+    background-image: linear-gradient(to right, #4e73df, #007bff); 
+  }
+  
+  .btn-page-1::after {
+    margin-left: 5px; 
+  }
+
+  .btn-page-2 {
+    border: 3px solid #555555;
+    margin: 8px;
+    height: 60px;
+    width: 250px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px; 
+    cursor: pointer; 
+    transition: background-image 0.3s ease;
+    font-family: "Mitr", sans-serif;
+  }
+  
+  .btn-page-2:hover {
+    color: white; 
+    background-color: #555555; 
+  }
+  
+  .btn-page-2::after {
+    margin-left: 5px; 
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    .container-page {
+        grid-template-columns: 1fr;
+    }
+
+    .left-side {
+        margin-top: 0; 
+        border-radius: 20px;
+        padding: 30px;
+    }
+
+    .left-side h1 {
+        font-size: 25px; 
+    }
+
+    .left-side p {
+        font-size: 5vw;
+    }
+
+    .btn-page-1,
+    .btn-page-2 {
+        width: 80vw; 
+        font-size: 6vw; 
+    }
+
+    .right-side img {
+        max-width: 200px;
+        max-height: 200px;
+        object-fit: contain;
+    }
+}
+
+

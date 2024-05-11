@@ -35,6 +35,12 @@
     },
     "eduYear": {
       "type": "integer"
+    },
+    "subjectNameEng": {
+      "type": "string"
+    },
+    "subjectNameThai": {
+      "type": "string"
     }
   }
 }

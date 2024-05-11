@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Conf from '../../config';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginCallbackPage = () => {
   const navigate = useNavigate();
@@ -48,10 +50,11 @@ const LoginCallbackPage = () => {
 
           localStorage.setItem('accessToken', JSON.stringify(dataToStore));
 
+          toast.success('เข้าสู่ระบบสำเร็จ');
           navigate('/');
         } else {
           console.error('เกิดข้อผิดพลาดในการรับ Access Token:', response.data);
-          navigate('/login');
+          navigate('/');
         }
       } catch (error) {
         console.error('เกิดข้อผิดพลาดในการรับ Access Token:', error);

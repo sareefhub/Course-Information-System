@@ -1,0 +1,140 @@
+.comment {
+    background-color: #f0f2f5;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    font-family: "Mitr", sans-serif;
+}
+
+.comment-user {
+    font-weight: bold;
+    color: #1877f2;
+    margin-bottom: 5px;
+}
+
+.comment-text {
+    word-wrap: break-word;
+}
+
+.comment-timestamp {
+    color: #606770;
+    font-size: 0.8em;
+}
+
+.comment-rating {
+    margin-top: 10px;
+}
+
+.comment-rating span {
+    color: #f39c12;
+    font-size: 1.2em;
+    margin-right: 3px;
+}
+
+.container-comments {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.review-container {
+    font-family: "Mitr", sans-serif;
+    height: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color: #f0f2f5;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.review-textarea {
+    height: 140px;
+}
+
+.review-textarea {
+    font-family: "Mitr", sans-serif;
+    width: calc(100%);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 2px solid #dddfe2;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.login-required{
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Mitr", sans-serif;
+    font-size: 20px;
+    color: #ff0000;
+}
+
+.already-reviewed{
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Mitr", sans-serif;
+    font-size: 20px;
+    color: #007bff;
+}
+
+.not-registered{
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Mitr", sans-serif;
+    font-size: 20px;
+    color: #ff0000;
+}
+
+.sorting-dropdown {
+    margin: 10px;
+    margin-bottom: 10px;
+    font-family: "Mitr", sans-serif;
+    margin-top: auto;
+}
+
+.sorting-dropdown select {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    outline: none;
+    transition: border-color 0.3s;
+    font-family: "Mitr", sans-serif;
+}
+
+
+.sorting-dropdown select:focus {
+    border-color: #007bff;
+}
+
+.sorting-dropdown label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.no-comments{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-family: "Mitr", sans-serif;
+    font-size: 16px;
+    color: #ff0000;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .review-container{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .container-comments{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+}

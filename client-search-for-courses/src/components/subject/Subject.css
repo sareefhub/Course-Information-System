@@ -1,31 +1,26 @@
-.title-subject{
-    font-size: 30px;
+.title-subject {
+    font-size: 25px;
     font-family: "Mitr", sans-serif;
     color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-
 .container-subjects {
+    font-family: "Mitr", sans-serif;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    border: 2px solid #ccc;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     margin-top: 30px;
-    background-color: #f2f2f2; 
+    background: linear-gradient(to right, #ffffff, #f2f2f2);
     transition: transform 0.3s ease;
-    
-}
-
-.container-subjects:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .subject {
-    background-color: #fff; 
-    border-radius: 5px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
     margin-bottom: 15px;
     padding: 15px;
     border: 1px solid #ddd;
@@ -33,12 +28,18 @@
 }
 
 .subject-name {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #333;
+    font-size: 20px;
+    color: #000000;
 }
 
 .subject-instructor {
     font-style: italic;
     color: #666;
+}
+
+@media only screen and (max-width: 600px) {
+    .container-subjects{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }

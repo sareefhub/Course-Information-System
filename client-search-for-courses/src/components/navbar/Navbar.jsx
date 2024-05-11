@@ -1,20 +1,35 @@
 import React, { useState , useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginButton from '../../auth/loginpsu/login';
+import Loading from '../loader/Loader'
 import './Navbar.css';
 
 function Navbar() {
   const [isChecked, setIsChecked] = useState(false);
+  const [loading, setLoading] = useState(true); // เพิ่ม state สำหรับ loading
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
   };
 
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false); // เมื่อโหลดเสร็จแล้วกำหนดให้ loading เป็น false
+    }, 500); // ในกรณีนี้ให้ทำการโหลดเป็นเวลา 300 มิลลิวินาที
+
+    return () => clearTimeout(timer);
+  }, []);
+
+
+  if (loading) { // ถ้าโหลดอยู่ให้แสดง Loading component
+    return <Loading />;
+  }
+
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
-        <a className="navbar-brand" href="/">
+        <a className="navbar-brand" href="/searchSubject">
           <img src={require("../../images/logo-psu.png")} alt="Logo" width="100px" height="40px"/>
           <span className="navbar-text-cis">CIS</span>
         </a>

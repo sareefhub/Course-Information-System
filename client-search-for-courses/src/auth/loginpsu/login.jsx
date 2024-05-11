@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Conf from '../../config';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './login.css';
 
 const LoginButton = () => {
@@ -26,7 +28,7 @@ const LoginButton = () => {
     localStorage.removeItem('accessToken');
     setIsLoggedIn(false);
     navigate('/');
-    window.location.reload();
+    toast.success("ออกจากระบบสำเร็จ");
   };
 
   const handleNavigation = (path) => {
@@ -52,6 +54,7 @@ const LoginButton = () => {
           </button>
           <div className={`dropdown-menu${showDropdown ? ' show' : ''}`} aria-labelledby="dropdownMenuButton">
             <div className="dropdown-item" onClick={() => handleNavigation("/profile")}>Profile</div>
+            <div className="dropdown-item" onClick={() => handleNavigation("/profile")}>รีวิวรายของที่เคยเรียน</div>
             <div className="dropdown-item logout-button" onClick={handleLogout}>
               ออกจากระบบ
             </div>

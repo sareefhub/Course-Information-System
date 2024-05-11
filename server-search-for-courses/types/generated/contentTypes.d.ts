@@ -388,6 +388,8 @@ export interface ApiCommentComment extends Schema.CollectionType {
     subjectCode: Attribute.String;
     eduTerm: Attribute.Integer;
     eduYear: Attribute.Integer;
+    subjectNameEng: Attribute.String;
+    subjectNameThai: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
