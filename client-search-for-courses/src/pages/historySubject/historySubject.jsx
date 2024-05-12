@@ -62,8 +62,6 @@ function HistorySubject() {
           <button className='historySubject-review' onClick={() => handleNavigation('/SubjectReview')}>
             <FontAwesomeIcon icon={faPenToSquare} /> ยังไม่ได้รีวิว
           </button>
-        </div>
-        <div className='historySubjects-review'>
           <button className='historySubject-review' onClick={() => handleNavigation('/historySubjectReview')}>
             <FontAwesomeIcon icon={faClockRotateLeft} /> รายวิชาที่เคยรีวิว
           </button>
@@ -97,10 +95,7 @@ function HistorySubject() {
                   <p>{subject.subjectNameThai}</p>
                   <p>เกรด: {subject.grade}</p>
                   <p>เทอม {subject.eduTerm} / ปีการศึกษา {subject.eduYear}</p>
-                  <p>ประเภทวิชา: {subject.type}</p>
                   <p>หน่วยกิต: {subject.credit}</p>
-                  <p>ประเภทวิชา: {subject.subjectType}</p>
-                  <p>รายละเอียดประเภทวิชา: {subject.subjectTypeDesc}</p>
                 </div>
               </div>
             ))

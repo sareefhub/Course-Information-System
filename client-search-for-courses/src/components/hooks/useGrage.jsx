@@ -36,8 +36,6 @@ export const useGrage = (code) => {
                     console.log(error);
                 });
         } else {
-            // Handle the case when accessToken or accessToken.accessToken is null
-            console.log("accessToken is null");
         }
     }, [code]);
 

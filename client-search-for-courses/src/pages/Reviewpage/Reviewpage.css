@@ -59,8 +59,17 @@
     color: #555; /* สีเทาเข้ม */
     text-align: center;
 }
-
-
+.rating-container {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .rating-container p {
+    margin: 0;
+    padding: 0 5px;
+  }
 
 .search-bar {
     margin-bottom: 20px;
