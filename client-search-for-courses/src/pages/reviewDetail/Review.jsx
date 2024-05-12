@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import Navbar from '../../components/navbar/Navbar';
 import Conf from '../../config';
 import axios from 'axios';
-import Subject from '../../components/subject/Subject';
-import { useGrage } from './useGrage';
+import Subject from '../../components/hooks/subject/Subject';
+import { useGrage } from '../../components/hooks/useGrage';
 import { Rating } from '@mui/material';
 import './Review.css';
 
@@ -14,13 +14,14 @@ const Review = () => {
     const [rating, setRating] = useState(0);
     const [sorting, setSorting] = useState('highestRated');
     const { eduTerm, eduYear, code } = useParams();
-    const {registered} = useGrage(code);
+    const { registered } = useGrage(code);
     const [subjectData, setSubjectData] = useState([]);
 
     const accessTokenData = localStorage.getItem('accessToken');
-    const accessToken = JSON.parse(accessTokenData);
-    const user = accessToken.accessToken.student.data[0].studentId;
+    const accessToken = accessTokenData ? JSON.parse(accessTokenData) : null;
+    const user = accessToken ? accessToken.accessToken.student.data[0].studentId : null;
     
+
     useEffect(() => {
         const fetchComments = async () => {
             try {
@@ -66,7 +67,7 @@ const Review = () => {
             publishedAt: timestamp,
             eduTerm,
             eduYear,
-            subjectCode: code ,
+            subjectCode: code,
             subjectNameThai: subjectData.subjectNameThai,
             subjectNameEng: subjectData.subjectNameEng
         };
@@ -95,10 +96,10 @@ const Review = () => {
     };
 
     const hasReviewed = () => {
-        return comments.some(comment => comment.attributes.user === user);
+        return user && comments.some(comment => comment.attributes.user === user);
     };
 
-    let sortedComments = comments;
+    let sortedComments = [...comments];
 
     if (sorting === 'highestRated') {
         sortedComments.sort((a, b) => b.attributes.rating - a.attributes.rating);
@@ -124,10 +125,11 @@ const Review = () => {
                             <div>
                                 <Rating
                                     name="simple-controlled"
-                                    value={rating}
+                                    value={isLoggedIn() ? rating : 0}
                                     onChange={(event, newValue) => {
                                         setRating(newValue);
                                     }}
+                                    readOnly={!isLoggedIn()}
                                 />
                             </div>
                             <button className="Btn-filter" type="submit">Post Comment</button>

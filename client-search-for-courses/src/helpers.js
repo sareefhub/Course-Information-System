@@ -1,17 +1,21 @@
-// import React, { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import {fetchAccessToken} from './auth/loginpsu/LoginCallbackPage'
-  
-//   export const Protector = ({ Component, ...rest }) => {
-//     const navigate = useNavigate();
-  
-//     const { accessToken } = fetchAccessToken();
-  
-//     useEffect(() => {
-//       if (!accessToken) {
-//         navigate("/login");
-//       }
-//     }, [navigate, accessToken]);
-  
-//     return <Component {...rest} />;
-//   };
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+const fetchAccessToken = () => {
+  return {
+    accessToken: localStorage.getItem("accessToken")
+  };
+};
+
+export const Protector = ({ Component, ...rest }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const { accessToken } = fetchAccessToken();
+    if (!accessToken) {
+      navigate("/");
+    }
+  }, [navigate]);
+
+  return <Component {...rest} />;
+};

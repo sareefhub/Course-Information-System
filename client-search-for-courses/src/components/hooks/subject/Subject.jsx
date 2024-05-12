@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Conf from '../../config';
+import Conf from '../../../config';
 import axios from 'axios';
 import './Subject.css';
 

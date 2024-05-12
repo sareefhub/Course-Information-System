@@ -54,7 +54,7 @@ const LoginButton = () => {
           </button>
           <div className={`dropdown-menu${showDropdown ? ' show' : ''}`} aria-labelledby="dropdownMenuButton">
             <div className="dropdown-item" onClick={() => handleNavigation("/profile")}>Profile</div>
-            <div className="dropdown-item" onClick={() => handleNavigation("/profile")}>รีวิวรายของที่เคยเรียน</div>
+            <div className="dropdown-item" onClick={() => handleNavigation("/historySubject")}>รีวิวรายวิชาที่เคยเรียน</div>
             <div className="dropdown-item logout-button" onClick={handleLogout}>
               ออกจากระบบ
             </div>

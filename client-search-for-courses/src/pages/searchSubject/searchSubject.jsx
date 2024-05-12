@@ -45,7 +45,7 @@ const Home = () => {
         }
         // เชื่อม API เพื่อค้นหารายวิชา
         setLoading(true);
-        axios.get(`${Conf.apiUrl}/${filterSubjectOffer}/${selectedTerm}/${selectedYear}?campasID=&facID=&deptID=&keySearch=${encodeURIComponent(searchTerm)}&offset=0&limit=5`, {
+        axios.get(`${Conf.apiUrl}/${filterSubjectOffer}/${selectedTerm}/${selectedYear}?campasID=&facID=&deptID=&keySearch=${encodeURIComponent(searchTerm)}&offset=0&limit=1000`, {
             headers: {
                 'Content-Type': 'application/json',
                 'credential': Conf.apiKey

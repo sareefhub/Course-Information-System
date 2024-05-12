@@ -1,10 +1,16 @@
-.reviewpage-contrainer {
-    font-family: "Mitr", sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    margin-top: 10px;
-    transition: transform 0.3s ease;
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.reviewpage-card {
+    animation: slideIn 1.5s ease forwards;
 }
 
 .reviewpage-contrainer {
@@ -118,4 +124,13 @@
     font-size: 16px;
     margin-right: 10px;
 }
+
+.Pagination-Review {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
   
+  .Pagination-Review .MuiPagination-root {
+    margin: 0 auto;
+  }
