@@ -8,12 +8,13 @@ import Navbar from '../../components/navbar/Navbar';
 const SubjectDetail = () => {
     const { eduTerm, eduYear, code } = useParams();
     const [subject, setSubject] = useState(null);
-    const [lecturer, setLecturer] = useState(null);
+    const [lecturers, setLecturers] = useState([]);
+    const [lecturersBySubject, setLecturersBySubject] = useState({}); // เพิ่มการประกาศ lecturersBySubject
 
     useEffect(() => {
         const fetchSubject = async () => {
             try {
-                const response = await axios.get(`${Conf.apiUrl}/SectionOffer/${eduTerm}/${eduYear}?campusID=&facID=&deptID=&keySearch=${code}`, {
+                const response = await axios.get(`${Conf.apiUrl}/SectionOffer/${eduTerm}/${eduYear}?campusID=&facID=&deptID=&keySearch=${code}&offset=0&limit=2000`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'credential': Conf.apiKey
@@ -29,29 +30,36 @@ const SubjectDetail = () => {
             }
         };
 
-        const fetchLecturer = async () => {
+        const fetchLecturers = async () => {
             try {
-                const response = await axios.get(`${Conf.apiUrl}/SectionLecturer/${eduTerm}/${eduYear}/${subject.subjectId}?campusID=&facID=&deptID=&keySearch=`, {
+                const response = await axios.get(`${Conf.apiUrl}/SectionLecturer/${eduTerm}/${eduYear}?campusID=&facID=&deptID=&keySearch=${code}&offset=0&limit=2000`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'credential': Conf.apiKey
                     }
                 });
                 if (response.data && response.data.data && response.data.data.length > 0) {
-                    setLecturer(response.data.data[0]);
+                    setLecturers(response.data.data);
+                    // สร้าง lecturersBySubject จากข้อมูลอาจารย์ทั้งหมด
+                    const lecturersBySubject = {};
+                    response.data.data.forEach(lecturer => {
+                        if (!lecturersBySubject[lecturer.subjectCode]) {
+                            lecturersBySubject[lecturer.subjectCode] = [];
+                        }
+                        lecturersBySubject[lecturer.subjectCode].push(lecturer);
+                    });
+                    setLecturersBySubject(lecturersBySubject);
                 } else {
-                    console.error('No data found');
+                    console.error('No lecturer data found');
                 }
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error fetching lecturer:', error);
             }
         };
 
+        fetchLecturers();
         fetchSubject();
-        if (subject) {
-            fetchLecturer();
-        }
-    }, [eduTerm, eduYear, code, subject]);
+    }, [eduTerm, eduYear, code]);
 
     return (
         <div>
@@ -136,12 +144,29 @@ const SubjectDetail = () => {
                                 </Grid>
                                 <Grid item xs={3}>
                                     <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
+                                        facNameThai
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={9}>
+                                    <Typography variant="body1" sx={{ color: 'black' }}>
+                                        {subject.facNameThai}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={3}>
+                                    <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
                                         Lecturer
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={9}>
                                     <Typography variant="body1">
-                                        {lecturer && `${lecturer.lecturerNameThai} ${lecturer.lecturerSnameThai}`}
+                                        {Object.keys(lecturersBySubject).map(subjectCode => (
+                                            <div key={subjectCode}>
+                                                <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}></Typography>
+                                                {lecturersBySubject[subjectCode].map((lecturer, index) => (
+                                                    <Typography key={index} variant="body1">{`${lecturer.lecturerNameThai} ${lecturer.lecturerSnameThai}`}</Typography>
+                                                ))}
+                                            </div>
+                                        ))}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} sx={{ textAlign: 'right' }}>
