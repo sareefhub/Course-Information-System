@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import './page.css';
-import logoImage from '../../images/NovaByte.png';
+import logoImage from '../../images/NovaByteAPI.png';
 
 const TypeWriter = ({ words, speed }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);

@@ -31,9 +31,8 @@ function Navbar() {
       <div className="container">
         <a className="navbar-brand" href="/searchSubject">
           <img src={require("../../images/logo-psu.png")} alt="Logo" width="100px" height="40px"/>
-          <span className="navbar-text-cis">CIS</span>
+          <img src={require("../../images/NovaByteAPI.png")} alt="Logo" width="100px" height="60px"/>
         </a>
-        <span className="navbar-text">Course Information System</span>
         <input className="navbar-toggle"id="toggleChecker" type="checkbox" checked={isChecked} onChange={handleToggle} />
         <label id="togglerLable" htmlFor="toggleChecker">
           <div className="checkboxtoggler">
