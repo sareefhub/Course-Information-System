@@ -146,3 +146,61 @@
   .Pagination-Review .MuiPagination-root {
     margin: 0 auto;
   }
+
+
+  .reviewpage-container {
+  margin: 20px;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.reviewpage-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.Pagination-Review {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+.reviewpage-container {
+    margin: 20px;
+  }
+  
+  .search-bar {
+    margin-bottom: 20px;
+  }
+  
+  .reviewpage-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .rating-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .Pagination-Review {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
