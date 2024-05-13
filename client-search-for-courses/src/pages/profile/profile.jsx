@@ -14,10 +14,10 @@ function Profile() {
         <Card sx={{ marginBottom: 2, marginTop: 2 }}>
           <CardContent>
             <Typography variant="h5" sx={{ fontWeight: 'bold', mb: 2 }}>
-              ประวัตินักศึกษา
+                ข้อมูลนักศึกษา
             </Typography>
             <Grid container spacing={2} alignItems="center">
-              <Grid item xs={5}>
+              <Grid item xs={12}>
                 <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
                   รหัสนักศึกษา
                 </Typography>
