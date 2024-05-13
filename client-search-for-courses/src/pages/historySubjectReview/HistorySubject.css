@@ -13,7 +13,7 @@
     font-family: "Mitr", sans-serif;
 }
 
-.btn-historySubject {
+.btn-historySubjectss {
     margin: 8px;
     height: 40px;
     width: 120px;
@@ -29,6 +29,6 @@
     float: right;
 }
 
-.btn-historySubject:hover {
+.btn-historySubjectss:hover {
     background-image: linear-gradient(to right, #ff1100, #ff0004); /* เปลี่ยนสี background-image ใน hover เป็นสีที่ต้องการ */
 }

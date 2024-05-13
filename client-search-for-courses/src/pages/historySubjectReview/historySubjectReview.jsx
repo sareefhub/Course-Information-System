@@ -118,7 +118,7 @@ function HistorySubject() {
                                     <p>เกรด: {subject.grade}</p>
                                     <p>หน่วยกิต: {subject.credit}</p>
                                     <div className='text-commentreview'>
-                                        <button className="btn-historySubject" onClick={() => handleNavigation(`/review/${subject.eduTerm}/${subject.eduYear}/${subject.subjectCode}`)} >ดูรีวิว</button>
+                                        <button className="btn-historySubjectss" onClick={() => handleNavigation(`/review/${subject.eduTerm}/${subject.eduYear}/${subject.subjectCode}`)} >ดูรีวิว</button>
                                         <p>แสดงความคิดเห็นของคุณ : </p>
                                         {comments[subject.subjectCode] && comments[subject.subjectCode].map(comment => (
                                             <div key={comment.id}>
