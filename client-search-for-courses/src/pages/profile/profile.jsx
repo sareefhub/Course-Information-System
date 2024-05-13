@@ -17,7 +17,7 @@ function Profile() {
               ประวัตินักศึกษา
             </Typography>
             <Grid container spacing={2} alignItems="center">
-              <Grid item xs={3}>
+              <Grid item xs={5}>
                 <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
                   รหัสนักศึกษา
                 </Typography>
@@ -55,19 +55,7 @@ function Profile() {
                   {studentData && studentData.campusNameThai}
                 </Typography>
               </Grid>
-              <Grid item xs={9} sx={{ position: 'relative' }}>
-                <Box sx={{ width: 150, height: 150, overflow: 'hidden', position: 'absolute', top: 0, right: 0, borderRadius: '50%', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)' }}>
-                  <Avatar
-                    alt="Student"
-                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=286&q=80"
-                    sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </Box>
-              </Grid>
             </Grid>
-            <Button variant="outlined" sx={{ mt: 2 }}>
-              แก้ไข
-            </Button>
           </CardContent>
         </Card>
       </Container>

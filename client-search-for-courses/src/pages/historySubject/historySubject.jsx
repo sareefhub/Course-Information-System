@@ -93,8 +93,8 @@ function HistorySubject() {
                   <button className="btn-historySubject" onClick={() => handleNavigation(`/SubjectDetail/${subject.eduTerm}/${subject.eduYear}/${subject.subjectCode}`)} >ดูเพิ่มเติม</button>
                   <p>{subject.subjectCode} {subject.subjectNameEng}</p>
                   <p>{subject.subjectNameThai}</p>
-                  <p>เกรด: {subject.grade}</p>
                   <p>เทอม {subject.eduTerm} / ปีการศึกษา {subject.eduYear}</p>
+                  <p>เกรด: {subject.grade}</p>
                   <p>หน่วยกิต: {subject.credit}</p>
                 </div>
               </div>

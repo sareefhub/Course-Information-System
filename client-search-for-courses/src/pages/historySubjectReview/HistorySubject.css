@@ -1,0 +1,34 @@
+.text-commentreview {
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    line-height: 1.6;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    background-image: linear-gradient(to right, #007bff, #4e73df);
+    color: white;
+    cursor: pointer;
+    transition: background-image 0.3s ease;
+    font-family: "Mitr", sans-serif;
+}
+
+.btn-historySubject {
+    margin: 8px;
+    height: 40px;
+    width: 120px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none; 
+    border-radius: 10px; 
+    background-image: linear-gradient(to right, #ff1100, #ff0004); /* เปลี่ยนสี background-image เป็นสีที่ต้องการ */
+    color: white; 
+    cursor: pointer; 
+    transition: background-image 0.3s ease;
+    font-family: "Mitr", sans-serif;
+    float: right;
+}
+
+.btn-historySubject:hover {
+    background-image: linear-gradient(to right, #ff1100, #ff0004); /* เปลี่ยนสี background-image ใน hover เป็นสีที่ต้องการ */
+}

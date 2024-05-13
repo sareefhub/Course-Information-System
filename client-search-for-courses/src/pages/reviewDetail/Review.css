@@ -126,6 +126,11 @@
     text-align: center;
 }
 
+.Discussion-title{
+    font-size: 25px;
+    font-family: "Mitr", sans-serif;
+}
+
 
 @media only screen and (max-width: 600px) {
     .review-container{

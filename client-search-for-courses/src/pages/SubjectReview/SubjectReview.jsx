@@ -117,12 +117,9 @@ function SubjectReview() {
                   <button className="btn-historySubject" onClick={() => handleNavigation(`/review/${subject.eduTerm}/${subject.eduYear}/${subject.subjectCode}`)} >รีวิวรายวิชา</button>
                   <p>{subject.subjectCode} {subject.subjectNameEng}</p>
                   <p>{subject.subjectNameThai}</p>
-                  <p>เกรด: {subject.grade}</p>
                   <p>เทอม {subject.eduTerm} / ปีการศึกษา {subject.eduYear}</p>
-                  <p>ประเภทวิชา: {subject.type}</p>
+                  <p>เกรด: {subject.grade}</p>
                   <p>หน่วยกิต: {subject.credit}</p>
-                  <p>ประเภทวิชา: {subject.subjectType}</p>
-                  <p>รายละเอียดประเภทวิชา: {subject.subjectTypeDesc}</p>
                 </div>
               </div>
             ))

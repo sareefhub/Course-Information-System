@@ -51,7 +51,7 @@ function Navbar() {
               <a className="nav-link" href="/review">รีวิวรายวิชา</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/fanpage">แฟนเพจต่างๆ</a>
+              <a className="nav-link" href="/fanpage">แฟนเพจ</a>
             </li>
           </ul>
           <div className="ml-auto">

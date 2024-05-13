@@ -6,6 +6,11 @@ import axios from 'axios';
 import Subject from '../../components/hooks/subject/Subject';
 import { useGrage } from '../../components/hooks/useGrage';
 import { Rating } from '@mui/material';
+import { toast } from 'react-toastify';
+import Filter from 'bad-words';
+import 'react-toastify/dist/ReactToastify.css';
+import profanityWords from './high.json'; // เรียกใช้ไฟล์ JSON ที่นำเข้ามา
+
 import './Review.css';
 
 const Review = () => {
@@ -20,7 +25,9 @@ const Review = () => {
     const accessTokenData = localStorage.getItem('accessToken');
     const accessToken = accessTokenData ? JSON.parse(accessTokenData) : null;
     const user = accessToken ? accessToken.accessToken.student.data[0].studentId : null;
-    
+
+    const filter = new Filter();
+    const badWords = profanityWords.profanityWords.map(word => word.toLowerCase());
 
     useEffect(() => {
         const fetchComments = async () => {
@@ -47,7 +54,36 @@ const Review = () => {
 
     const handleCommentSubmit = async (e) => {
         e.preventDefault();
-        if (!text || !rating || !eduTerm || !eduYear || !code) return;
+        if (!text || !rating || !eduTerm || !eduYear || !code) {
+            const alertDiv = document.createElement('div');
+            alertDiv.classList.add('alert', 'alert-danger');
+            alertDiv.setAttribute('role', 'alert');
+            alertDiv.textContent = 'กรุณากรอกข้อมูลให้ครบถ้วน';
+    
+            const reviewContainer = document.querySelector('.review-container');
+            reviewContainer.appendChild(alertDiv);
+    
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 2500);
+            return;
+        }
+
+        // กรองคำหยาบ
+        if (filter.isProfane(text.toLowerCase()) || containsBadWord(text.toLowerCase(), badWords)) {
+            const alertDiv = document.createElement('div');
+            alertDiv.classList.add('alert', 'alert-danger');
+            alertDiv.setAttribute('role', 'alert');
+            alertDiv.textContent = 'กรุณาอย่าใช้คำหยาบหรือคำไม่เหมาะสม';
+
+            const reviewContainer = document.querySelector('.review-container');
+            reviewContainer.appendChild(alertDiv);
+
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 5000);
+            return;
+        }
 
         const existingComment = comments.find(comment => comment.attributes.user === user);
 
@@ -86,6 +122,7 @@ const Review = () => {
             setComments([...comments, response.data.data]);
             setText('');
             setRating(0);
+            toast.success('แสดงความคิดเห็นสำเร็จ');
         } catch (error) {
             console.error('Error posting comment:', error.message);
         }
@@ -120,6 +157,7 @@ const Review = () => {
                                 className="review-textarea"
                                 placeholder="แสดงความคิดเห็นรายวิชานี้อย่างสุภาพ"
                                 value={text}
+                                maxLength={100}
                                 onChange={(e) => setText(e.target.value)}
                             ></textarea>
                             <div>
@@ -144,6 +182,7 @@ const Review = () => {
                 <div className="login-required">กรุณาเข้าสู่ระบบเพื่อแสดงความคิดเห็น</div>
             )}
             <div className="container-comments">
+                <div className='Discussion-title'>Discussion ({sortedComments.length})</div>
                 <div className="sorting-dropdown">
                     <label htmlFor="sorting">เรียงลำดับตาม: </label>
                     <select
@@ -155,13 +194,12 @@ const Review = () => {
                         <option value="highestRated">คะแนนเยอะที่สุด</option>
                     </select>
                 </div>
-
                 {sortedComments.length > 0 ? (
                     sortedComments.map((comment) => (
                         <div className="comment" key={comment.id}>
                             <div className="comment-user">{comment.attributes.user.substring(0, 2) + 'xxxxxxx' + comment.attributes.user.slice(-1)}</div>
                             <div className="comment-timestamp">{new Date(comment.attributes.timestamp).toLocaleString()}</div>
-                            <div className="comment-text">{comment.attributes.text}</div>
+                            <div className="comment-text">{filter.isProfane(comment.attributes.text) || containsBadWord(comment.attributes.text.toLowerCase(), badWords) ? '*' : comment.attributes.text}</div>
                             <div className="comment-rating">
                                 <Rating name="read-only" value={comment.attributes.rating} readOnly />
                             </div>
@@ -173,6 +211,11 @@ const Review = () => {
             </div>
         </div>
     );
+};
+
+// ฟังก์ชันในการตรวจสอบว่าข้อความมีคำหยาบหรือไม่
+const containsBadWord = (text, badWords) => {
+    return badWords.some(word => text.includes(word));
 };
 
 export default Review;

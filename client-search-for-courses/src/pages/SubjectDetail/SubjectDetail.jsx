@@ -9,7 +9,7 @@ const SubjectDetail = () => {
     const { eduTerm, eduYear, code } = useParams();
     const [subject, setSubject] = useState(null);
     const [lecturers, setLecturers] = useState([]);
-    const [lecturersBySubject, setLecturersBySubject] = useState({}); // เพิ่มการประกาศ lecturersBySubject
+    const [lecturersBySubject, setLecturersBySubject] = useState({});
 
     useEffect(() => {
         const fetchSubject = async () => {
@@ -144,16 +144,6 @@ const SubjectDetail = () => {
                                 </Grid>
                                 <Grid item xs={3}>
                                     <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
-                                        facNameThai
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={9}>
-                                    <Typography variant="body1" sx={{ color: 'black' }}>
-                                        {subject.facNameThai}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography variant="body1" sx={{ color: 'rgba(0, 0, 0, 0.6)' }}>
                                         Lecturer
                                     </Typography>
                                 </Grid>
@@ -175,9 +165,19 @@ const SubjectDetail = () => {
                                         color="primary"
                                         component="a"
                                         href={`/review/${eduTerm}/${eduYear}/${code}`}
+                                        style={{
+                                            textDecoration: 'none',
+                                            padding: '10px 20px',
+                                            boxShadow: '0 3px 5px rgba(0, 0, 0, 0.2)',
+                                            transition: 'box-shadow 0.3s',
+                                            marginBottom: '20px',
+                                        }}
+                                        onMouseOver={(e) => { e.currentTarget.style.boxShadow = '0 5px 10px rgba(0, 0, 0, 0.3)' }}
+                                        onMouseOut={(e) => { e.currentTarget.style.boxShadow = '0 3px 5px rgba(0, 0, 0, 0.2)' }}
                                     >
-                                        Review
+                                        สำหรับความคิดเห็น
                                     </Button>
+
                                 </Grid>
                             </Grid>
                         </Grid>
