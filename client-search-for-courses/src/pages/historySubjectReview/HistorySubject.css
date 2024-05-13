@@ -21,7 +21,7 @@
     font-size: 14px;
     border: none; 
     border-radius: 10px; 
-    background-image: linear-gradient(to right, #ff1100, #ff0004); /* เปลี่ยนสี background-image เป็นสีที่ต้องการ */
+    background-image: linear-gradient(to right, #ff1100, #ff0004);
     color: white; 
     cursor: pointer; 
     transition: background-image 0.3s ease;
@@ -30,5 +30,5 @@
 }
 
 .btn-historySubjectss:hover {
-    background-image: linear-gradient(to right, #ff1100, #ff0004); /* เปลี่ยนสี background-image ใน hover เป็นสีที่ต้องการ */
+    background-image: linear-gradient(to right, #ff1100, #ff0004);
 }

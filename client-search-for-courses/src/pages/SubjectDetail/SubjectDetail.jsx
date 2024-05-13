@@ -175,7 +175,7 @@ const SubjectDetail = () => {
                                         onMouseOver={(e) => { e.currentTarget.style.boxShadow = '0 5px 10px rgba(0, 0, 0, 0.3)' }}
                                         onMouseOut={(e) => { e.currentTarget.style.boxShadow = '0 3px 5px rgba(0, 0, 0, 0.2)' }}
                                     >
-                                        สำหรับความคิดเห็น
+                                        ดูความคิดเห็นรายวิชานี้
                                     </Button>
 
                                 </Grid>
